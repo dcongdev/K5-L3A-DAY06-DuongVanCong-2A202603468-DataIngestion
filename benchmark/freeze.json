@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-11-13T11:18:40.898071+00:00",
+  "snapshot": "155e5bee7d985ef30555b496eb994d24a591f70b",
+  "sha256": {
+    "benchmark/dev.jsonl": "e5b21c69ef0dbb89db8683754f78bd07e6d7a23ecbaac49be32880ee38af755c",
+    "benchmark/test.jsonl": "46082e1c286473eeb2ae727d62541ef48d432dbfaecd2272f0e45a74bd4ae5bd",
+    "data/processed/units.jsonl": "053b40c2f4e3648cb5df57bc6c571b6a72bb8ef0d3c9929e33d5bfa234d6be6a",
+    "benchmark/README.md": "a9066313ee683ff05481ad6e9fd82ac168a9f0ef93c2a5e38388d58cf8464dd9"
+  },
+  "counts": {
+    "dev": 15,
+    "test": 5,
+    "filter_questions": 5,
+    "test_filter_questions": 2
+  },
+  "status": "Frozen before any retrieval experiments; no retrieval performed in this step."
+}

@@ -1,0 +1,1841 @@
+{
+  "document_id": "pep-0257",
+  "source": "https://raw.githubusercontent.com/python/peps/155e5bee7d985ef30555b496eb994d24a591f70b/peps/pep-0257.rst",
+  "text": "Abstract\n========\n\nThis PEP documents the semantics and conventions associated with\nPython docstrings.\n\nRationale\n=========\n\nThe aim of this PEP is to standardize the high-level structure of\ndocstrings: what they should contain, and how to say it (without\ntouching on any markup syntax within docstrings). The PEP contains\nconventions, not laws or syntax.\n\n    \"A universal convention supplies all of maintainability, clarity,\n    consistency, and a foundation for good programming habits too.\n    What it doesn't do is insist that you follow it against your will.\n    That's Python!\"\n\n    -- Tim Peters on comp.lang.python, 2001-06-16\n\nIf you violate these conventions, the worst you'll get is some dirty\nlooks. But some software (such as the Docutils_ docstring processing\nsystem :pep:`256`, :pep:`258`) will be aware of the conventions, so following them\nwill get you the best results.\n\nSpecification\n=============\n\nWhat is a Docstring?\n--------------------\n\nA docstring is a string literal that occurs as the first statement in\na module, function, class, or method definition. Such a docstring\nbecomes the ``__doc__`` special attribute of that object.\n\nAll modules should normally have docstrings, and all functions and\nclasses exported by a module should also have docstrings. Public\nmethods (including the ``__init__`` constructor) should also have\ndocstrings. A package may be documented in the module docstring of\nthe ``__init__.py`` file in the package directory.\n\nString literals occurring elsewhere in Python code may also act as\ndocumentation. They are not recognized by the Python bytecode\ncompiler and are not accessible as runtime object attributes (i.e. not\nassigned to ``__doc__``), but two types of extra docstrings may be\nextracted by software tools:\n\n1. String literals occurring immediately after a simple assignment at\n   the top level of a module, class, or ``__init__`` method are called\n   \"attribute docstrings\".\n\n2. String literals occurring immediately after another docstring are\n   called \"additional docstrings\".\n\nPlease see :pep:`258`, \"Docutils Design Specification\", for a\ndetailed description of attribute and additional docstrings.\n\nFor consistency, always use ``\"\"\"triple double quotes\"\"\"`` around\ndocstrings. Use ``r\"\"\"raw triple double quotes\"\"\"`` if you use any\nbackslashes in your docstrings.\n\nThere are two forms of docstrings: one-liners and multi-line\ndocstrings.\n\nOne-line Docstrings\n--------------------\n\nOne-liners are for really obvious cases. They should really fit on\none line. For example::\n\n    def kos_root():\n        \"\"\"Return the pathname of the KOS root directory.\"\"\"\n        global _kos_root\n        if _kos_root: return _kos_root\n        ...\n\nNotes:\n\n- Triple quotes are used even though the string fits on one line.\n  This makes it easy to later expand it.\n\n- The closing quotes are on the same line as the opening quotes. This\n  looks better for one-liners.\n\n- There's no blank line either before or after the docstring.\n\n- The docstring is a phrase ending in a period. It prescribes the\n  function or method's effect as a command (\"Do this\", \"Return that\"),\n  not as a description; e.g. don't write \"Returns the pathname ...\".\n\n- The one-line docstring should NOT be a \"signature\" reiterating the\n  function/method parameters (which can be obtained by introspection).\n  Don't do::\n\n      def function(a, b):\n          \"\"\"function(a, b) -> list\"\"\"\n\n  This type of docstring is only appropriate for C functions (such as\n  built-ins), where introspection is not possible.  However, the\n  nature of the *return value* cannot be determined by introspection,\n  so it should be mentioned.  The preferred form for such a docstring\n  would be something like::\n\n      def function(a, b):\n          \"\"\"Do X and return a list.\"\"\"\n\n  (Of course \"Do X\" should be replaced by a useful description!)\n\nMulti-line Docstrings\n----------------------\n\nMulti-line docstrings consist of a summary line just like a one-line\ndocstring, followed by a blank line, followed by a more elaborate\ndescription. The summary line may be used by automatic indexing\ntools; it is important that it fits on one line and is separated from\nthe rest of the docstring by a blank line. The summary line may be on\nthe same line as the opening quotes or on the next line. The entire\ndocstring is indented the same as the quotes at its first line (see\nexample below).\n\nInsert a blank line after all docstrings (one-line or multi-line) that\ndocument a class -- generally speaking, the class's methods are\nseparated from each other by a single blank line, and the docstring\nneeds to be offset from the first method by a blank line.\n\nThe docstring of a script (a stand-alone program) should be usable as\nits \"usage\" message, printed when the script is invoked with incorrect\nor missing arguments (or perhaps with a \"-h\" option, for \"help\").\nSuch a docstring should document the script's function and command\nline syntax, environment variables, and files. Usage messages can be\nfairly elaborate (several screens full) and should be sufficient for a\nnew user to use the command properly, as well as a complete quick\nreference to all options and arguments for the sophisticated user.\n\nThe docstring for a module should generally list the classes,\nexceptions and functions (and any other objects) that are exported by\nthe module, with a one-line summary of each. (These summaries\ngenerally give less detail than the summary line in the object's\ndocstring.) The docstring for a package (i.e., the docstring of the\npackage's ``__init__.py`` module) should also list the modules and\nsubpackages exported by the package.\n\nThe docstring for a function or method should summarize its behavior\nand document its arguments, return value(s), side effects, exceptions\nraised, and restrictions on when it can be called (all if applicable).\nOptional arguments should be indicated. It should be documented\nwhether keyword arguments are part of the interface.\n\nThe docstring for a class should summarize its behavior and list the\npublic methods and instance variables. If the class is intended to be\nsubclassed, and has an additional interface for subclasses, this\ninterface should be listed separately (in the docstring). The class\nconstructor should be documented in the docstring for its ``__init__``\nmethod. Individual methods should be documented by their own\ndocstring.\n\nIf a class subclasses another class and its behavior is mostly\ninherited from that class, its docstring should mention this and\nsummarize the differences. Use the verb \"override\" to indicate that a\nsubclass method replaces a superclass method and does not call the\nsuperclass method; use the verb \"extend\" to indicate that a subclass\nmethod calls the superclass method (in addition to its own behavior).\n\n*Do not* use the Emacs convention of mentioning the arguments of\nfunctions or methods in upper case in running text. Python is case\nsensitive and the argument names can be used for keyword arguments, so\nthe docstring should document the correct argument names. It is best\nto list each argument on a separate line. For example::\n\n    def complex(real=0.0, imag=0.0):\n        \"\"\"Form a complex number.\n\n        Keyword arguments:\n        real -- the real part (default 0.0)\n        imag -- the imaginary part (default 0.0)\n        \"\"\"\n        if imag == 0.0 and real == 0.0:\n            return complex_zero\n        ...\n\nUnless the entire docstring fits on a line, place the closing quotes\non a line by themselves. This way, Emacs' ``fill-paragraph`` command\ncan be used on it.\n\nHandling Docstring Indentation\n------------------------------\n\nDocstring processing tools will strip a uniform amount of indentation\nfrom the second and further lines of the docstring, equal to the\nminimum indentation of all non-blank lines after the first line. Any\nindentation in the first line of the docstring (i.e., up to the first\nnewline) is insignificant and removed. Relative indentation of later\nlines in the docstring is retained. Blank lines should be removed\nfrom the beginning and end of the docstring.\n\nSince code is much more precise than words, here is an implementation\nof the algorithm::\n\n    def trim(docstring):\n        if not docstring:\n            return ''\n        # Convert tabs to spaces (following the normal Python rules)\n        # and split into a list of lines:\n        lines = docstring.expandtabs().splitlines()\n        # Determine minimum indentation (first line doesn't count):\n        indent = sys.maxsize\n        for line in lines[1:]:\n            stripped = line.lstrip()\n            if stripped:\n                indent = min(indent, len(line) - len(stripped))\n        # Remove indentation (first line is special):\n        trimmed = [lines[0].strip()]\n        if indent < sys.maxsize:\n            for line in lines[1:]:\n                trimmed.append(line[indent:].rstrip())\n        # Strip off trailing and leading blank lines:\n        while trimmed and not trimmed[-1]:\n            trimmed.pop()\n        while trimmed and not trimmed[0]:\n            trimmed.pop(0)\n        # Return a single string:\n        return '\\n'.join(trimmed)\n\nThe docstring in this example contains two newline characters and is\ntherefore 3 lines long. The first and last lines are blank::\n\n    def foo():\n        \"\"\"\n        This is the second line of the docstring.\n        \"\"\"\n\nTo illustrate::\n\n    >>> print repr(foo.__doc__)\n    '\\n    This is the second line of the docstring.\\n    '\n    >>> foo.__doc__.splitlines()\n    ['', '    This is the second line of the docstring.', '    ']\n    >>> trim(foo.__doc__)\n    'This is the second line of the docstring.'\n\nOnce trimmed, these docstrings are equivalent::\n\n    def foo():\n        \"\"\"A multi-line\n        docstring.\n        \"\"\"\n\n    def bar():\n        \"\"\"\n        A multi-line\n        docstring.\n        \"\"\"\n\nAcknowledgements\n================\n\nThe \"Specification\" text comes mostly verbatim from :pep:`8`\nby Guido van Rossum.\n\nThis document borrows ideas from the archives of the Python Doc-SIG_.\nThanks to all members past and present.",
+  "line_map": [
+    {
+      "start": 0,
+      "end": 8,
+      "raw_start": 245,
+      "raw_end": 254,
+      "line": 12
+    },
+    {
+      "start": 9,
+      "end": 17,
+      "raw_start": 254,
+      "raw_end": 263,
+      "line": 13
+    },
+    {
+      "start": 18,
+      "end": 18,
+      "raw_start": 263,
+      "raw_end": 264,
+      "line": 14
+    },
+    {
+      "start": 19,
+      "end": 83,
+      "raw_start": 264,
+      "raw_end": 329,
+      "line": 15
+    },
+    {
+      "start": 84,
+      "end": 102,
+      "raw_start": 329,
+      "raw_end": 348,
+      "line": 16
+    },
+    {
+      "start": 103,
+      "end": 103,
+      "raw_start": 348,
+      "raw_end": 349,
+      "line": 17
+    },
+    {
+      "start": 104,
+      "end": 113,
+      "raw_start": 350,
+      "raw_end": 360,
+      "line": 19
+    },
+    {
+      "start": 114,
+      "end": 123,
+      "raw_start": 360,
+      "raw_end": 370,
+      "line": 20
+    },
+    {
+      "start": 124,
+      "end": 124,
+      "raw_start": 370,
+      "raw_end": 371,
+      "line": 21
+    },
+    {
+      "start": 125,
+      "end": 190,
+      "raw_start": 371,
+      "raw_end": 437,
+      "line": 22
+    },
+    {
+      "start": 191,
+      "end": 255,
+      "raw_start": 437,
+      "raw_end": 502,
+      "line": 23
+    },
+    {
+      "start": 256,
+      "end": 322,
+      "raw_start": 502,
+      "raw_end": 570,
+      "line": 24
+    },
+    {
+      "start": 323,
+      "end": 355,
+      "raw_start": 570,
+      "raw_end": 603,
+      "line": 25
+    },
+    {
+      "start": 356,
+      "end": 356,
+      "raw_start": 603,
+      "raw_end": 604,
+      "line": 26
+    },
+    {
+      "start": 357,
+      "end": 426,
+      "raw_start": 604,
+      "raw_end": 674,
+      "line": 27
+    },
+    {
+      "start": 427,
+      "end": 493,
+      "raw_start": 674,
+      "raw_end": 741,
+      "line": 28
+    },
+    {
+      "start": 494,
+      "end": 564,
+      "raw_start": 741,
+      "raw_end": 812,
+      "line": 29
+    },
+    {
+      "start": 565,
+      "end": 584,
+      "raw_start": 812,
+      "raw_end": 832,
+      "line": 30
+    },
+    {
+      "start": 585,
+      "end": 585,
+      "raw_start": 832,
+      "raw_end": 833,
+      "line": 31
+    },
+    {
+      "start": 586,
+      "end": 635,
+      "raw_start": 833,
+      "raw_end": 883,
+      "line": 32
+    },
+    {
+      "start": 636,
+      "end": 636,
+      "raw_start": 883,
+      "raw_end": 884,
+      "line": 33
+    },
+    {
+      "start": 637,
+      "end": 705,
+      "raw_start": 884,
+      "raw_end": 953,
+      "line": 34
+    },
+    {
+      "start": 706,
+      "end": 774,
+      "raw_start": 953,
+      "raw_end": 1023,
+      "line": 35
+    },
+    {
+      "start": 775,
+      "end": 857,
+      "raw_start": 1023,
+      "raw_end": 1106,
+      "line": 36
+    },
+    {
+      "start": 858,
+      "end": 888,
+      "raw_start": 1106,
+      "raw_end": 1137,
+      "line": 37
+    },
+    {
+      "start": 889,
+      "end": 889,
+      "raw_start": 1137,
+      "raw_end": 1138,
+      "line": 38
+    },
+    {
+      "start": 890,
+      "end": 903,
+      "raw_start": 1139,
+      "raw_end": 1153,
+      "line": 40
+    },
+    {
+      "start": 904,
+      "end": 917,
+      "raw_start": 1153,
+      "raw_end": 1167,
+      "line": 41
+    },
+    {
+      "start": 918,
+      "end": 918,
+      "raw_start": 1167,
+      "raw_end": 1168,
+      "line": 42
+    },
+    {
+      "start": 919,
+      "end": 939,
+      "raw_start": 1168,
+      "raw_end": 1189,
+      "line": 43
+    },
+    {
+      "start": 940,
+      "end": 960,
+      "raw_start": 1189,
+      "raw_end": 1210,
+      "line": 44
+    },
+    {
+      "start": 961,
+      "end": 961,
+      "raw_start": 1210,
+      "raw_end": 1211,
+      "line": 45
+    },
+    {
+      "start": 962,
+      "end": 1031,
+      "raw_start": 1211,
+      "raw_end": 1281,
+      "line": 46
+    },
+    {
+      "start": 1032,
+      "end": 1097,
+      "raw_start": 1281,
+      "raw_end": 1348,
+      "line": 47
+    },
+    {
+      "start": 1098,
+      "end": 1155,
+      "raw_start": 1348,
+      "raw_end": 1406,
+      "line": 48
+    },
+    {
+      "start": 1156,
+      "end": 1156,
+      "raw_start": 1406,
+      "raw_end": 1407,
+      "line": 49
+    },
+    {
+      "start": 1157,
+      "end": 1223,
+      "raw_start": 1407,
+      "raw_end": 1474,
+      "line": 50
+    },
+    {
+      "start": 1224,
+      "end": 1288,
+      "raw_start": 1474,
+      "raw_end": 1540,
+      "line": 51
+    },
+    {
+      "start": 1289,
+      "end": 1354,
+      "raw_start": 1540,
+      "raw_end": 1606,
+      "line": 52
+    },
+    {
+      "start": 1355,
+      "end": 1421,
+      "raw_start": 1606,
+      "raw_end": 1674,
+      "line": 53
+    },
+    {
+      "start": 1422,
+      "end": 1472,
+      "raw_start": 1674,
+      "raw_end": 1725,
+      "line": 54
+    },
+    {
+      "start": 1473,
+      "end": 1473,
+      "raw_start": 1725,
+      "raw_end": 1726,
+      "line": 55
+    },
+    {
+      "start": 1474,
+      "end": 1540,
+      "raw_start": 1726,
+      "raw_end": 1793,
+      "line": 56
+    },
+    {
+      "start": 1541,
+      "end": 1602,
+      "raw_start": 1793,
+      "raw_end": 1856,
+      "line": 57
+    },
+    {
+      "start": 1603,
+      "end": 1673,
+      "raw_start": 1856,
+      "raw_end": 1927,
+      "line": 58
+    },
+    {
+      "start": 1674,
+      "end": 1740,
+      "raw_start": 1927,
+      "raw_end": 1994,
+      "line": 59
+    },
+    {
+      "start": 1741,
+      "end": 1769,
+      "raw_start": 1994,
+      "raw_end": 2023,
+      "line": 60
+    },
+    {
+      "start": 1770,
+      "end": 1770,
+      "raw_start": 2023,
+      "raw_end": 2024,
+      "line": 61
+    },
+    {
+      "start": 1771,
+      "end": 1840,
+      "raw_start": 2024,
+      "raw_end": 2094,
+      "line": 62
+    },
+    {
+      "start": 1841,
+      "end": 1911,
+      "raw_start": 2094,
+      "raw_end": 2165,
+      "line": 63
+    },
+    {
+      "start": 1912,
+      "end": 1938,
+      "raw_start": 2165,
+      "raw_end": 2192,
+      "line": 64
+    },
+    {
+      "start": 1939,
+      "end": 1939,
+      "raw_start": 2192,
+      "raw_end": 2193,
+      "line": 65
+    },
+    {
+      "start": 1940,
+      "end": 2008,
+      "raw_start": 2193,
+      "raw_end": 2262,
+      "line": 66
+    },
+    {
+      "start": 2009,
+      "end": 2043,
+      "raw_start": 2262,
+      "raw_end": 2297,
+      "line": 67
+    },
+    {
+      "start": 2044,
+      "end": 2044,
+      "raw_start": 2297,
+      "raw_end": 2298,
+      "line": 68
+    },
+    {
+      "start": 2045,
+      "end": 2106,
+      "raw_start": 2298,
+      "raw_end": 2360,
+      "line": 69
+    },
+    {
+      "start": 2107,
+      "end": 2167,
+      "raw_start": 2360,
+      "raw_end": 2421,
+      "line": 70
+    },
+    {
+      "start": 2168,
+      "end": 2168,
+      "raw_start": 2421,
+      "raw_end": 2422,
+      "line": 71
+    },
+    {
+      "start": 2169,
+      "end": 2234,
+      "raw_start": 2422,
+      "raw_end": 2488,
+      "line": 72
+    },
+    {
+      "start": 2235,
+      "end": 2301,
+      "raw_start": 2488,
+      "raw_end": 2556,
+      "line": 73
+    },
+    {
+      "start": 2302,
+      "end": 2333,
+      "raw_start": 2556,
+      "raw_end": 2588,
+      "line": 74
+    },
+    {
+      "start": 2334,
+      "end": 2334,
+      "raw_start": 2588,
+      "raw_end": 2589,
+      "line": 75
+    },
+    {
+      "start": 2335,
+      "end": 2395,
+      "raw_start": 2589,
+      "raw_end": 2650,
+      "line": 76
+    },
+    {
+      "start": 2396,
+      "end": 2407,
+      "raw_start": 2650,
+      "raw_end": 2662,
+      "line": 77
+    },
+    {
+      "start": 2408,
+      "end": 2408,
+      "raw_start": 2662,
+      "raw_end": 2663,
+      "line": 78
+    },
+    {
+      "start": 2409,
+      "end": 2428,
+      "raw_start": 2664,
+      "raw_end": 2684,
+      "line": 80
+    },
+    {
+      "start": 2429,
+      "end": 2449,
+      "raw_start": 2684,
+      "raw_end": 2705,
+      "line": 81
+    },
+    {
+      "start": 2450,
+      "end": 2450,
+      "raw_start": 2705,
+      "raw_end": 2706,
+      "line": 82
+    },
+    {
+      "start": 2451,
+      "end": 2517,
+      "raw_start": 2706,
+      "raw_end": 2774,
+      "line": 83
+    },
+    {
+      "start": 2518,
+      "end": 2541,
+      "raw_start": 2774,
+      "raw_end": 2799,
+      "line": 84
+    },
+    {
+      "start": 2542,
+      "end": 2542,
+      "raw_start": 2799,
+      "raw_end": 2800,
+      "line": 85
+    },
+    {
+      "start": 2543,
+      "end": 2562,
+      "raw_start": 2800,
+      "raw_end": 2820,
+      "line": 86
+    },
+    {
+      "start": 2563,
+      "end": 2623,
+      "raw_start": 2820,
+      "raw_end": 2881,
+      "line": 87
+    },
+    {
+      "start": 2624,
+      "end": 2648,
+      "raw_start": 2881,
+      "raw_end": 2906,
+      "line": 88
+    },
+    {
+      "start": 2649,
+      "end": 2687,
+      "raw_start": 2906,
+      "raw_end": 2945,
+      "line": 89
+    },
+    {
+      "start": 2688,
+      "end": 2699,
+      "raw_start": 2945,
+      "raw_end": 2957,
+      "line": 90
+    },
+    {
+      "start": 2700,
+      "end": 2700,
+      "raw_start": 2957,
+      "raw_end": 2958,
+      "line": 91
+    },
+    {
+      "start": 2701,
+      "end": 2707,
+      "raw_start": 2958,
+      "raw_end": 2965,
+      "line": 92
+    },
+    {
+      "start": 2708,
+      "end": 2708,
+      "raw_start": 2965,
+      "raw_end": 2966,
+      "line": 93
+    },
+    {
+      "start": 2709,
+      "end": 2774,
+      "raw_start": 2966,
+      "raw_end": 3032,
+      "line": 94
+    },
+    {
+      "start": 2775,
+      "end": 2815,
+      "raw_start": 3032,
+      "raw_end": 3073,
+      "line": 95
+    },
+    {
+      "start": 2816,
+      "end": 2816,
+      "raw_start": 3073,
+      "raw_end": 3074,
+      "line": 96
+    },
+    {
+      "start": 2817,
+      "end": 2886,
+      "raw_start": 3074,
+      "raw_end": 3145,
+      "line": 97
+    },
+    {
+      "start": 2887,
+      "end": 2917,
+      "raw_start": 3145,
+      "raw_end": 3176,
+      "line": 98
+    },
+    {
+      "start": 2918,
+      "end": 2918,
+      "raw_start": 3176,
+      "raw_end": 3177,
+      "line": 99
+    },
+    {
+      "start": 2919,
+      "end": 2980,
+      "raw_start": 3177,
+      "raw_end": 3239,
+      "line": 100
+    },
+    {
+      "start": 2981,
+      "end": 2981,
+      "raw_start": 3239,
+      "raw_end": 3240,
+      "line": 101
+    },
+    {
+      "start": 2982,
+      "end": 3047,
+      "raw_start": 3240,
+      "raw_end": 3307,
+      "line": 102
+    },
+    {
+      "start": 3048,
+      "end": 3118,
+      "raw_start": 3307,
+      "raw_end": 3378,
+      "line": 103
+    },
+    {
+      "start": 3119,
+      "end": 3187,
+      "raw_start": 3378,
+      "raw_end": 3447,
+      "line": 104
+    },
+    {
+      "start": 3188,
+      "end": 3188,
+      "raw_start": 3447,
+      "raw_end": 3448,
+      "line": 105
+    },
+    {
+      "start": 3189,
+      "end": 3257,
+      "raw_start": 3448,
+      "raw_end": 3517,
+      "line": 106
+    },
+    {
+      "start": 3258,
+      "end": 3328,
+      "raw_start": 3517,
+      "raw_end": 3588,
+      "line": 107
+    },
+    {
+      "start": 3329,
+      "end": 3341,
+      "raw_start": 3588,
+      "raw_end": 3601,
+      "line": 108
+    },
+    {
+      "start": 3342,
+      "end": 3342,
+      "raw_start": 3601,
+      "raw_end": 3602,
+      "line": 109
+    },
+    {
+      "start": 3343,
+      "end": 3368,
+      "raw_start": 3602,
+      "raw_end": 3628,
+      "line": 110
+    },
+    {
+      "start": 3369,
+      "end": 3407,
+      "raw_start": 3628,
+      "raw_end": 3667,
+      "line": 111
+    },
+    {
+      "start": 3408,
+      "end": 3408,
+      "raw_start": 3667,
+      "raw_end": 3668,
+      "line": 112
+    },
+    {
+      "start": 3409,
+      "end": 3478,
+      "raw_start": 3668,
+      "raw_end": 3738,
+      "line": 113
+    },
+    {
+      "start": 3479,
+      "end": 3543,
+      "raw_start": 3738,
+      "raw_end": 3803,
+      "line": 114
+    },
+    {
+      "start": 3544,
+      "end": 3613,
+      "raw_start": 3803,
+      "raw_end": 3873,
+      "line": 115
+    },
+    {
+      "start": 3614,
+      "end": 3683,
+      "raw_start": 3873,
+      "raw_end": 3943,
+      "line": 116
+    },
+    {
+      "start": 3684,
+      "end": 3711,
+      "raw_start": 3943,
+      "raw_end": 3971,
+      "line": 117
+    },
+    {
+      "start": 3712,
+      "end": 3712,
+      "raw_start": 3971,
+      "raw_end": 3972,
+      "line": 118
+    },
+    {
+      "start": 3713,
+      "end": 3738,
+      "raw_start": 3972,
+      "raw_end": 3998,
+      "line": 119
+    },
+    {
+      "start": 3739,
+      "end": 3778,
+      "raw_start": 3998,
+      "raw_end": 4038,
+      "line": 120
+    },
+    {
+      "start": 3779,
+      "end": 3779,
+      "raw_start": 4038,
+      "raw_end": 4039,
+      "line": 121
+    },
+    {
+      "start": 3780,
+      "end": 3844,
+      "raw_start": 4039,
+      "raw_end": 4104,
+      "line": 122
+    },
+    {
+      "start": 3845,
+      "end": 3845,
+      "raw_start": 4104,
+      "raw_end": 4105,
+      "line": 123
+    },
+    {
+      "start": 3846,
+      "end": 3867,
+      "raw_start": 4106,
+      "raw_end": 4128,
+      "line": 125
+    },
+    {
+      "start": 3868,
+      "end": 3890,
+      "raw_start": 4128,
+      "raw_end": 4151,
+      "line": 126
+    },
+    {
+      "start": 3891,
+      "end": 3891,
+      "raw_start": 4151,
+      "raw_end": 4152,
+      "line": 127
+    },
+    {
+      "start": 3892,
+      "end": 3960,
+      "raw_start": 4152,
+      "raw_end": 4221,
+      "line": 128
+    },
+    {
+      "start": 3961,
+      "end": 4026,
+      "raw_start": 4221,
+      "raw_end": 4287,
+      "line": 129
+    },
+    {
+      "start": 4027,
+      "end": 4090,
+      "raw_start": 4287,
+      "raw_end": 4352,
+      "line": 130
+    },
+    {
+      "start": 4091,
+      "end": 4160,
+      "raw_start": 4352,
+      "raw_end": 4422,
+      "line": 131
+    },
+    {
+      "start": 4161,
+      "end": 4230,
+      "raw_start": 4422,
+      "raw_end": 4493,
+      "line": 132
+    },
+    {
+      "start": 4231,
+      "end": 4298,
+      "raw_start": 4493,
+      "raw_end": 4562,
+      "line": 133
+    },
+    {
+      "start": 4299,
+      "end": 4366,
+      "raw_start": 4562,
+      "raw_end": 4630,
+      "line": 134
+    },
+    {
+      "start": 4367,
+      "end": 4382,
+      "raw_start": 4630,
+      "raw_end": 4646,
+      "line": 135
+    },
+    {
+      "start": 4383,
+      "end": 4383,
+      "raw_start": 4646,
+      "raw_end": 4647,
+      "line": 136
+    },
+    {
+      "start": 4384,
+      "end": 4454,
+      "raw_start": 4647,
+      "raw_end": 4718,
+      "line": 137
+    },
+    {
+      "start": 4455,
+      "end": 4518,
+      "raw_start": 4718,
+      "raw_end": 4782,
+      "line": 138
+    },
+    {
+      "start": 4519,
+      "end": 4586,
+      "raw_start": 4782,
+      "raw_end": 4850,
+      "line": 139
+    },
+    {
+      "start": 4587,
+      "end": 4644,
+      "raw_start": 4850,
+      "raw_end": 4908,
+      "line": 140
+    },
+    {
+      "start": 4645,
+      "end": 4645,
+      "raw_start": 4908,
+      "raw_end": 4909,
+      "line": 141
+    },
+    {
+      "start": 4646,
+      "end": 4715,
+      "raw_start": 4909,
+      "raw_end": 4979,
+      "line": 142
+    },
+    {
+      "start": 4716,
+      "end": 4786,
+      "raw_start": 4979,
+      "raw_end": 5050,
+      "line": 143
+    },
+    {
+      "start": 4787,
+      "end": 4852,
+      "raw_start": 5050,
+      "raw_end": 5116,
+      "line": 144
+    },
+    {
+      "start": 4853,
+      "end": 4919,
+      "raw_start": 5116,
+      "raw_end": 5183,
+      "line": 145
+    },
+    {
+      "start": 4920,
+      "end": 4988,
+      "raw_start": 5183,
+      "raw_end": 5253,
+      "line": 146
+    },
+    {
+      "start": 4989,
+      "end": 5059,
+      "raw_start": 5253,
+      "raw_end": 5324,
+      "line": 147
+    },
+    {
+      "start": 5060,
+      "end": 5125,
+      "raw_start": 5324,
+      "raw_end": 5390,
+      "line": 148
+    },
+    {
+      "start": 5126,
+      "end": 5192,
+      "raw_start": 5390,
+      "raw_end": 5457,
+      "line": 149
+    },
+    {
+      "start": 5193,
+      "end": 5193,
+      "raw_start": 5457,
+      "raw_end": 5458,
+      "line": 150
+    },
+    {
+      "start": 5194,
+      "end": 5255,
+      "raw_start": 5458,
+      "raw_end": 5520,
+      "line": 151
+    },
+    {
+      "start": 5256,
+      "end": 5325,
+      "raw_start": 5520,
+      "raw_end": 5590,
+      "line": 152
+    },
+    {
+      "start": 5326,
+      "end": 5387,
+      "raw_start": 5590,
+      "raw_end": 5653,
+      "line": 153
+    },
+    {
+      "start": 5388,
+      "end": 5452,
+      "raw_start": 5653,
+      "raw_end": 5718,
+      "line": 154
+    },
+    {
+      "start": 5453,
+      "end": 5520,
+      "raw_start": 5718,
+      "raw_end": 5787,
+      "line": 155
+    },
+    {
+      "start": 5521,
+      "end": 5587,
+      "raw_start": 5787,
+      "raw_end": 5854,
+      "line": 156
+    },
+    {
+      "start": 5588,
+      "end": 5624,
+      "raw_start": 5854,
+      "raw_end": 5891,
+      "line": 157
+    },
+    {
+      "start": 5625,
+      "end": 5625,
+      "raw_start": 5891,
+      "raw_end": 5892,
+      "line": 158
+    },
+    {
+      "start": 5626,
+      "end": 5694,
+      "raw_start": 5892,
+      "raw_end": 5961,
+      "line": 159
+    },
+    {
+      "start": 5695,
+      "end": 5764,
+      "raw_start": 5961,
+      "raw_end": 6031,
+      "line": 160
+    },
+    {
+      "start": 5765,
+      "end": 5835,
+      "raw_start": 6031,
+      "raw_end": 6102,
+      "line": 161
+    },
+    {
+      "start": 5836,
+      "end": 5899,
+      "raw_start": 6102,
+      "raw_end": 6167,
+      "line": 162
+    },
+    {
+      "start": 5900,
+      "end": 5952,
+      "raw_start": 6167,
+      "raw_end": 6220,
+      "line": 163
+    },
+    {
+      "start": 5953,
+      "end": 5953,
+      "raw_start": 6220,
+      "raw_end": 6221,
+      "line": 164
+    },
+    {
+      "start": 5954,
+      "end": 6022,
+      "raw_start": 6221,
+      "raw_end": 6290,
+      "line": 165
+    },
+    {
+      "start": 6023,
+      "end": 6092,
+      "raw_start": 6290,
+      "raw_end": 6361,
+      "line": 166
+    },
+    {
+      "start": 6093,
+      "end": 6157,
+      "raw_start": 6361,
+      "raw_end": 6426,
+      "line": 167
+    },
+    {
+      "start": 6158,
+      "end": 6225,
+      "raw_start": 6426,
+      "raw_end": 6495,
+      "line": 168
+    },
+    {
+      "start": 6226,
+      "end": 6296,
+      "raw_start": 6495,
+      "raw_end": 6566,
+      "line": 169
+    },
+    {
+      "start": 6297,
+      "end": 6357,
+      "raw_start": 6566,
+      "raw_end": 6628,
+      "line": 170
+    },
+    {
+      "start": 6358,
+      "end": 6368,
+      "raw_start": 6628,
+      "raw_end": 6639,
+      "line": 171
+    },
+    {
+      "start": 6369,
+      "end": 6369,
+      "raw_start": 6639,
+      "raw_end": 6640,
+      "line": 172
+    },
+    {
+      "start": 6370,
+      "end": 6432,
+      "raw_start": 6640,
+      "raw_end": 6703,
+      "line": 173
+    },
+    {
+      "start": 6433,
+      "end": 6497,
+      "raw_start": 6703,
+      "raw_end": 6768,
+      "line": 174
+    },
+    {
+      "start": 6498,
+      "end": 6567,
+      "raw_start": 6768,
+      "raw_end": 6839,
+      "line": 175
+    },
+    {
+      "start": 6568,
+      "end": 6634,
+      "raw_start": 6839,
+      "raw_end": 6906,
+      "line": 176
+    },
+    {
+      "start": 6635,
+      "end": 6703,
+      "raw_start": 6906,
+      "raw_end": 6975,
+      "line": 177
+    },
+    {
+      "start": 6704,
+      "end": 6773,
+      "raw_start": 6975,
+      "raw_end": 7045,
+      "line": 178
+    },
+    {
+      "start": 6774,
+      "end": 6774,
+      "raw_start": 7045,
+      "raw_end": 7046,
+      "line": 179
+    },
+    {
+      "start": 6775,
+      "end": 6839,
+      "raw_start": 7046,
+      "raw_end": 7111,
+      "line": 180
+    },
+    {
+      "start": 6840,
+      "end": 6906,
+      "raw_start": 7111,
+      "raw_end": 7179,
+      "line": 181
+    },
+    {
+      "start": 6907,
+      "end": 6977,
+      "raw_start": 7179,
+      "raw_end": 7250,
+      "line": 182
+    },
+    {
+      "start": 6978,
+      "end": 7046,
+      "raw_start": 7250,
+      "raw_end": 7320,
+      "line": 183
+    },
+    {
+      "start": 7047,
+      "end": 7102,
+      "raw_start": 7320,
+      "raw_end": 7377,
+      "line": 184
+    },
+    {
+      "start": 7103,
+      "end": 7103,
+      "raw_start": 7377,
+      "raw_end": 7378,
+      "line": 185
+    },
+    {
+      "start": 7104,
+      "end": 7140,
+      "raw_start": 7378,
+      "raw_end": 7415,
+      "line": 186
+    },
+    {
+      "start": 7141,
+      "end": 7174,
+      "raw_start": 7415,
+      "raw_end": 7449,
+      "line": 187
+    },
+    {
+      "start": 7175,
+      "end": 7175,
+      "raw_start": 7449,
+      "raw_end": 7450,
+      "line": 188
+    },
+    {
+      "start": 7176,
+      "end": 7202,
+      "raw_start": 7450,
+      "raw_end": 7477,
+      "line": 189
+    },
+    {
+      "start": 7203,
+      "end": 7246,
+      "raw_start": 7477,
+      "raw_end": 7521,
+      "line": 190
+    },
+    {
+      "start": 7247,
+      "end": 7295,
+      "raw_start": 7521,
+      "raw_end": 7570,
+      "line": 191
+    },
+    {
+      "start": 7296,
+      "end": 7307,
+      "raw_start": 7570,
+      "raw_end": 7582,
+      "line": 192
+    },
+    {
+      "start": 7308,
+      "end": 7347,
+      "raw_start": 7582,
+      "raw_end": 7622,
+      "line": 193
+    },
+    {
+      "start": 7348,
+      "end": 7379,
+      "raw_start": 7622,
+      "raw_end": 7654,
+      "line": 194
+    },
+    {
+      "start": 7380,
+      "end": 7391,
+      "raw_start": 7654,
+      "raw_end": 7666,
+      "line": 195
+    },
+    {
+      "start": 7392,
+      "end": 7392,
+      "raw_start": 7666,
+      "raw_end": 7667,
+      "line": 196
+    },
+    {
+      "start": 7393,
+      "end": 7461,
+      "raw_start": 7667,
+      "raw_end": 7736,
+      "line": 197
+    },
+    {
+      "start": 7462,
+      "end": 7530,
+      "raw_start": 7736,
+      "raw_end": 7806,
+      "line": 198
+    },
+    {
+      "start": 7531,
+      "end": 7549,
+      "raw_start": 7806,
+      "raw_end": 7825,
+      "line": 199
+    },
+    {
+      "start": 7550,
+      "end": 7550,
+      "raw_start": 7825,
+      "raw_end": 7826,
+      "line": 200
+    },
+    {
+      "start": 7551,
+      "end": 7581,
+      "raw_start": 7827,
+      "raw_end": 7858,
+      "line": 202
+    },
+    {
+      "start": 7582,
+      "end": 7612,
+      "raw_start": 7858,
+      "raw_end": 7889,
+      "line": 203
+    },
+    {
+      "start": 7613,
+      "end": 7613,
+      "raw_start": 7889,
+      "raw_end": 7890,
+      "line": 204
+    },
+    {
+      "start": 7614,
+      "end": 7683,
+      "raw_start": 7890,
+      "raw_end": 7960,
+      "line": 205
+    },
+    {
+      "start": 7684,
+      "end": 7748,
+      "raw_start": 7960,
+      "raw_end": 8025,
+      "line": 206
+    },
+    {
+      "start": 7749,
+      "end": 7817,
+      "raw_start": 8025,
+      "raw_end": 8095,
+      "line": 207
+    },
+    {
+      "start": 7818,
+      "end": 7887,
+      "raw_start": 8095,
+      "raw_end": 8165,
+      "line": 208
+    },
+    {
+      "start": 7888,
+      "end": 7956,
+      "raw_start": 8165,
+      "raw_end": 8235,
+      "line": 209
+    },
+    {
+      "start": 7957,
+      "end": 8022,
+      "raw_start": 8235,
+      "raw_end": 8302,
+      "line": 210
+    },
+    {
+      "start": 8023,
+      "end": 8067,
+      "raw_start": 8302,
+      "raw_end": 8347,
+      "line": 211
+    },
+    {
+      "start": 8068,
+      "end": 8068,
+      "raw_start": 8347,
+      "raw_end": 8348,
+      "line": 212
+    },
+    {
+      "start": 8069,
+      "end": 8138,
+      "raw_start": 8348,
+      "raw_end": 8418,
+      "line": 213
+    },
+    {
+      "start": 8139,
+      "end": 8157,
+      "raw_start": 8418,
+      "raw_end": 8437,
+      "line": 214
+    },
+    {
+      "start": 8158,
+      "end": 8158,
+      "raw_start": 8437,
+      "raw_end": 8438,
+      "line": 215
+    },
+    {
+      "start": 8159,
+      "end": 8183,
+      "raw_start": 8438,
+      "raw_end": 8463,
+      "line": 216
+    },
+    {
+      "start": 8184,
+      "end": 8209,
+      "raw_start": 8463,
+      "raw_end": 8489,
+      "line": 217
+    },
+    {
+      "start": 8210,
+      "end": 8231,
+      "raw_start": 8489,
+      "raw_end": 8511,
+      "line": 218
+    },
+    {
+      "start": 8232,
+      "end": 8300,
+      "raw_start": 8511,
+      "raw_end": 8580,
+      "line": 219
+    },
+    {
+      "start": 8301,
+      "end": 8342,
+      "raw_start": 8580,
+      "raw_end": 8622,
+      "line": 220
+    },
+    {
+      "start": 8343,
+      "end": 8394,
+      "raw_start": 8622,
+      "raw_end": 8674,
+      "line": 221
+    },
+    {
+      "start": 8395,
+      "end": 8462,
+      "raw_start": 8674,
+      "raw_end": 8742,
+      "line": 222
+    },
+    {
+      "start": 8463,
+      "end": 8491,
+      "raw_start": 8742,
+      "raw_end": 8771,
+      "line": 223
+    },
+    {
+      "start": 8492,
+      "end": 8522,
+      "raw_start": 8771,
+      "raw_end": 8802,
+      "line": 224
+    },
+    {
+      "start": 8523,
+      "end": 8559,
+      "raw_start": 8802,
+      "raw_end": 8839,
+      "line": 225
+    },
+    {
+      "start": 8560,
+      "end": 8584,
+      "raw_start": 8839,
+      "raw_end": 8864,
+      "line": 226
+    },
+    {
+      "start": 8585,
+      "end": 8648,
+      "raw_start": 8864,
+      "raw_end": 8928,
+      "line": 227
+    },
+    {
+      "start": 8649,
+      "end": 8702,
+      "raw_start": 8928,
+      "raw_end": 8982,
+      "line": 228
+    },
+    {
+      "start": 8703,
+      "end": 8739,
+      "raw_start": 8982,
+      "raw_end": 9019,
+      "line": 229
+    },
+    {
+      "start": 8740,
+      "end": 8772,
+      "raw_start": 9019,
+      "raw_end": 9052,
+      "line": 230
+    },
+    {
+      "start": 8773,
+      "end": 8807,
+      "raw_start": 9052,
+      "raw_end": 9087,
+      "line": 231
+    },
+    {
+      "start": 8808,
+      "end": 8862,
+      "raw_start": 9087,
+      "raw_end": 9142,
+      "line": 232
+    },
+    {
+      "start": 8863,
+      "end": 8916,
+      "raw_start": 9142,
+      "raw_end": 9196,
+      "line": 233
+    },
+    {
+      "start": 8917,
+      "end": 8959,
+      "raw_start": 9196,
+      "raw_end": 9239,
+      "line": 234
+    },
+    {
+      "start": 8960,
+      "end": 8985,
+      "raw_start": 9239,
+      "raw_end": 9265,
+      "line": 235
+    },
+    {
+      "start": 8986,
+      "end": 9027,
+      "raw_start": 9265,
+      "raw_end": 9307,
+      "line": 236
+    },
+    {
+      "start": 9028,
+      "end": 9054,
+      "raw_start": 9307,
+      "raw_end": 9334,
+      "line": 237
+    },
+    {
+      "start": 9055,
+      "end": 9088,
+      "raw_start": 9334,
+      "raw_end": 9368,
+      "line": 238
+    },
+    {
+      "start": 9089,
+      "end": 9122,
+      "raw_start": 9368,
+      "raw_end": 9402,
+      "line": 239
+    },
+    {
+      "start": 9123,
+      "end": 9123,
+      "raw_start": 9402,
+      "raw_end": 9403,
+      "line": 240
+    },
+    {
+      "start": 9124,
+      "end": 9192,
+      "raw_start": 9403,
+      "raw_end": 9472,
+      "line": 241
+    },
+    {
+      "start": 9193,
+      "end": 9253,
+      "raw_start": 9472,
+      "raw_end": 9534,
+      "line": 242
+    },
+    {
+      "start": 9254,
+      "end": 9254,
+      "raw_start": 9534,
+      "raw_end": 9535,
+      "line": 243
+    },
+    {
+      "start": 9255,
+      "end": 9269,
+      "raw_start": 9535,
+      "raw_end": 9550,
+      "line": 244
+    },
+    {
+      "start": 9270,
+      "end": 9281,
+      "raw_start": 9550,
+      "raw_end": 9562,
+      "line": 245
+    },
+    {
+      "start": 9282,
+      "end": 9331,
+      "raw_start": 9562,
+      "raw_end": 9612,
+      "line": 246
+    },
+    {
+      "start": 9332,
+      "end": 9343,
+      "raw_start": 9612,
+      "raw_end": 9624,
+      "line": 247
+    },
+    {
+      "start": 9344,
+      "end": 9344,
+      "raw_start": 9624,
+      "raw_end": 9625,
+      "line": 248
+    },
+    {
+      "start": 9345,
+      "end": 9360,
+      "raw_start": 9625,
+      "raw_end": 9641,
+      "line": 249
+    },
+    {
+      "start": 9361,
+      "end": 9361,
+      "raw_start": 9641,
+      "raw_end": 9642,
+      "line": 250
+    },
+    {
+      "start": 9362,
+      "end": 9393,
+      "raw_start": 9642,
+      "raw_end": 9674,
+      "line": 251
+    },
+    {
+      "start": 9394,
+      "end": 9453,
+      "raw_start": 9674,
+      "raw_end": 9734,
+      "line": 252
+    },
+    {
+      "start": 9454,
+      "end": 9486,
+      "raw_start": 9734,
+      "raw_end": 9767,
+      "line": 253
+    },
+    {
+      "start": 9487,
+      "end": 9552,
+      "raw_start": 9767,
+      "raw_end": 9833,
+      "line": 254
+    },
+    {
+      "start": 9553,
+      "end": 9578,
+      "raw_start": 9833,
+      "raw_end": 9859,
+      "line": 255
+    },
+    {
+      "start": 9579,
+      "end": 9626,
+      "raw_start": 9859,
+      "raw_end": 9907,
+      "line": 256
+    },
+    {
+      "start": 9627,
+      "end": 9627,
+      "raw_start": 9907,
+      "raw_end": 9908,
+      "line": 257
+    },
+    {
+      "start": 9628,
+      "end": 9675,
+      "raw_start": 9908,
+      "raw_end": 9956,
+      "line": 258
+    },
+    {
+      "start": 9676,
+      "end": 9676,
+      "raw_start": 9956,
+      "raw_end": 9957,
+      "line": 259
+    },
+    {
+      "start": 9677,
+      "end": 9691,
+      "raw_start": 9957,
+      "raw_end": 9972,
+      "line": 260
+    },
+    {
+      "start": 9692,
+      "end": 9715,
+      "raw_start": 9972,
+      "raw_end": 9996,
+      "line": 261
+    },
+    {
+      "start": 9716,
+      "end": 9734,
+      "raw_start": 9996,
+      "raw_end": 10015,
+      "line": 262
+    },
+    {
+      "start": 9735,
+      "end": 9746,
+      "raw_start": 10015,
+      "raw_end": 10027,
+      "line": 263
+    },
+    {
+      "start": 9747,
+      "end": 9747,
+      "raw_start": 10027,
+      "raw_end": 10028,
+      "line": 264
+    },
+    {
+      "start": 9748,
+      "end": 9762,
+      "raw_start": 10028,
+      "raw_end": 10043,
+      "line": 265
+    },
+    {
+      "start": 9763,
+      "end": 9774,
+      "raw_start": 10043,
+      "raw_end": 10055,
+      "line": 266
+    },
+    {
+      "start": 9775,
+      "end": 9795,
+      "raw_start": 10055,
+      "raw_end": 10076,
+      "line": 267
+    },
+    {
+      "start": 9796,
+      "end": 9814,
+      "raw_start": 10076,
+      "raw_end": 10095,
+      "line": 268
+    },
+    {
+      "start": 9815,
+      "end": 9826,
+      "raw_start": 10095,
+      "raw_end": 10107,
+      "line": 269
+    },
+    {
+      "start": 9827,
+      "end": 9827,
+      "raw_start": 10107,
+      "raw_end": 10108,
+      "line": 270
+    },
+    {
+      "start": 9828,
+      "end": 9844,
+      "raw_start": 10353,
+      "raw_end": 10370,
+      "line": 286
+    },
+    {
+      "start": 9845,
+      "end": 9861,
+      "raw_start": 10370,
+      "raw_end": 10387,
+      "line": 287
+    },
+    {
+      "start": 9862,
+      "end": 9862,
+      "raw_start": 10387,
+      "raw_end": 10388,
+      "line": 288
+    },
+    {
+      "start": 9863,
+      "end": 9923,
+      "raw_start": 10388,
+      "raw_end": 10449,
+      "line": 289
+    },
+    {
+      "start": 9924,
+      "end": 9944,
+      "raw_start": 10449,
+      "raw_end": 10470,
+      "line": 290
+    },
+    {
+      "start": 9945,
+      "end": 9945,
+      "raw_start": 10470,
+      "raw_end": 10471,
+      "line": 291
+    },
+    {
+      "start": 9946,
+      "end": 10015,
+      "raw_start": 10471,
+      "raw_end": 10541,
+      "line": 292
+    },
+    {
+      "start": 10016,
+      "end": 10055,
+      "raw_start": 10541,
+      "raw_end": 10581,
+      "line": 293
+    }
+  ]
+}

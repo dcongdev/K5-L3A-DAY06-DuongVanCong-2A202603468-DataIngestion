@@ -1,0 +1,1332 @@
+{
+  "schema_version": 1,
+  "processed_at": "2026-11-13T11:15:20.721276+00:00",
+  "offset_convention": "0-based Unicode character offsets, end exclusive; start/end refer to processed document text; raw_* offsets refer to original UTF-8 decoded file including original newlines. line_map maps whole lines, not individual characters.",
+  "normalization": "NFC, LF, tabs expanded to 8 columns; trim trailing whitespace, collapse unindented horizontal whitespace and repeated blank lines; retain RST markup, headings, paragraphs and code indentation.",
+  "unit_rule": "Sequential paragraph-end boundaries >=1500 characters including retained RST markup/whitespace; merge short tail into previous unit, no overlap or duplication; header and listed reference/license sections excluded.",
+  "document_count": 6,
+  "unit_count": 117,
+  "char_count": 194270,
+  "documents": [
+    {
+      "source_id": "pep-0001",
+      "document_id": "pep-0001",
+      "title": "PEP Purpose and Guidelines",
+      "source": "https://raw.githubusercontent.com/python/peps/155e5bee7d985ef30555b496eb994d24a591f70b/peps/pep-0001.rst",
+      "source_path_or_url": "data/raw/pep-0001.rst",
+      "snapshot": "155e5bee7d985ef30555b496eb994d24a591f70b",
+      "snapshot_provenance": "user supplied; not remotely verified",
+      "accessed_at": null,
+      "accessed_at_note": "Original download date not recorded; processed_at is local read time.",
+      "header": {
+        "PEP": "1",
+        "Title": "PEP Purpose and Guidelines",
+        "Author": "Barry Warsaw, Jeremy Hylton, David Goodger, Alyssa Coghlan",
+        "Status": "Active",
+        "Type": "Process",
+        "Created": "13-Jun-2000",
+        "Post-History": "21-Mar-2001, 29-Jul-2002, 03-May-2003, 05-May-2012, 07-Apr-2013"
+      },
+      "license_or_permission": "Copyright\n=========\n\nThis document is placed in the public domain or under the\nCC0-1.0-Universal license, whichever is more permissive.",
+      "raw_sha256": "7f94574b563a9e3f59c25fe225e0b04d695cb82ad28e83256b76418f8b457adb",
+      "raw_char_count": 41653,
+      "char_count": 39848,
+      "unit_count": 23,
+      "excluded_sections": [
+        {
+          "title": "Footnotes",
+          "raw_start": 39996,
+          "raw_end": 41341,
+          "line_start": 857,
+          "line_end": 896
+        },
+        {
+          "title": "Copyright",
+          "raw_start": 41517,
+          "raw_end": 41653,
+          "line_start": 905,
+          "line_end": 909
+        }
+      ],
+      "units": [
+        {
+          "unit_id": "pep-0001:u0001",
+          "unit_number": 1,
+          "start": 0,
+          "end": 1504,
+          "char_count": 1504,
+          "raw_line_start": 11,
+          "raw_line_end": 50
+        },
+        {
+          "unit_id": "pep-0001:u0002",
+          "unit_number": 2,
+          "start": 1504,
+          "end": 3178,
+          "char_count": 1674,
+          "raw_line_start": 51,
+          "raw_line_end": 86
+        },
+        {
+          "unit_id": "pep-0001:u0003",
+          "unit_number": 3,
+          "start": 3178,
+          "end": 4890,
+          "char_count": 1712,
+          "raw_line_start": 88,
+          "raw_line_end": 131
+        },
+        {
+          "unit_id": "pep-0001:u0004",
+          "unit_number": 4,
+          "start": 4890,
+          "end": 6474,
+          "char_count": 1584,
+          "raw_line_start": 132,
+          "raw_line_end": 158
+        },
+        {
+          "unit_id": "pep-0001:u0005",
+          "unit_number": 5,
+          "start": 6474,
+          "end": 8041,
+          "char_count": 1567,
+          "raw_line_start": 160,
+          "raw_line_end": 197
+        },
+        {
+          "unit_id": "pep-0001:u0006",
+          "unit_number": 6,
+          "start": 8041,
+          "end": 9736,
+          "char_count": 1695,
+          "raw_line_start": 198,
+          "raw_line_end": 231
+        },
+        {
+          "unit_id": "pep-0001:u0007",
+          "unit_number": 7,
+          "start": 9736,
+          "end": 11383,
+          "char_count": 1647,
+          "raw_line_start": 232,
+          "raw_line_end": 262
+        },
+        {
+          "unit_id": "pep-0001:u0008",
+          "unit_number": 8,
+          "start": 11383,
+          "end": 12982,
+          "char_count": 1599,
+          "raw_line_start": 263,
+          "raw_line_end": 298
+        },
+        {
+          "unit_id": "pep-0001:u0009",
+          "unit_number": 9,
+          "start": 12982,
+          "end": 14684,
+          "char_count": 1702,
+          "raw_line_start": 299,
+          "raw_line_end": 329
+        },
+        {
+          "unit_id": "pep-0001:u0010",
+          "unit_number": 10,
+          "start": 14684,
+          "end": 16550,
+          "char_count": 1866,
+          "raw_line_start": 331,
+          "raw_line_end": 364
+        },
+        {
+          "unit_id": "pep-0001:u0011",
+          "unit_number": 11,
+          "start": 16550,
+          "end": 18397,
+          "char_count": 1847,
+          "raw_line_start": 365,
+          "raw_line_end": 395
+        },
+        {
+          "unit_id": "pep-0001:u0012",
+          "unit_number": 12,
+          "start": 18397,
+          "end": 20310,
+          "char_count": 1913,
+          "raw_line_start": 396,
+          "raw_line_end": 428
+        },
+        {
+          "unit_id": "pep-0001:u0013",
+          "unit_number": 13,
+          "start": 20310,
+          "end": 21822,
+          "char_count": 1512,
+          "raw_line_start": 429,
+          "raw_line_end": 460
+        },
+        {
+          "unit_id": "pep-0001:u0014",
+          "unit_number": 14,
+          "start": 21822,
+          "end": 23534,
+          "char_count": 1712,
+          "raw_line_start": 461,
+          "raw_line_end": 493
+        },
+        {
+          "unit_id": "pep-0001:u0015",
+          "unit_number": 15,
+          "start": 23534,
+          "end": 25133,
+          "char_count": 1599,
+          "raw_line_start": 494,
+          "raw_line_end": 529
+        },
+        {
+          "unit_id": "pep-0001:u0016",
+          "unit_number": 16,
+          "start": 25133,
+          "end": 26663,
+          "char_count": 1530,
+          "raw_line_start": 530,
+          "raw_line_end": 561
+        },
+        {
+          "unit_id": "pep-0001:u0017",
+          "unit_number": 17,
+          "start": 26663,
+          "end": 28886,
+          "char_count": 2223,
+          "raw_line_start": 562,
+          "raw_line_end": 601
+        },
+        {
+          "unit_id": "pep-0001:u0018",
+          "unit_number": 18,
+          "start": 28886,
+          "end": 30738,
+          "char_count": 1852,
+          "raw_line_start": 602,
+          "raw_line_end": 647
+        },
+        {
+          "unit_id": "pep-0001:u0019",
+          "unit_number": 19,
+          "start": 30738,
+          "end": 32331,
+          "char_count": 1593,
+          "raw_line_start": 648,
+          "raw_line_end": 689
+        },
+        {
+          "unit_id": "pep-0001:u0020",
+          "unit_number": 20,
+          "start": 32331,
+          "end": 33995,
+          "char_count": 1664,
+          "raw_line_start": 690,
+          "raw_line_end": 728
+        },
+        {
+          "unit_id": "pep-0001:u0021",
+          "unit_number": 21,
+          "start": 33995,
+          "end": 35793,
+          "char_count": 1798,
+          "raw_line_start": 729,
+          "raw_line_end": 765
+        },
+        {
+          "unit_id": "pep-0001:u0022",
+          "unit_number": 22,
+          "start": 35793,
+          "end": 37418,
+          "char_count": 1625,
+          "raw_line_start": 766,
+          "raw_line_end": 802
+        },
+        {
+          "unit_id": "pep-0001:u0023",
+          "unit_number": 23,
+          "start": 37418,
+          "end": 39848,
+          "char_count": 2430,
+          "raw_line_start": 803,
+          "raw_line_end": 903
+        }
+      ],
+      "normalized_path": "data/processed/pep-0001.json"
+    },
+    {
+      "source_id": "pep-0008",
+      "document_id": "pep-0008",
+      "title": "Style Guide for Python Code",
+      "source": "https://raw.githubusercontent.com/python/peps/155e5bee7d985ef30555b496eb994d24a591f70b/peps/pep-0008.rst",
+      "source_path_or_url": "data/raw/pep-0008.rst",
+      "snapshot": "155e5bee7d985ef30555b496eb994d24a591f70b",
+      "snapshot_provenance": "user supplied; not remotely verified",
+      "accessed_at": null,
+      "accessed_at_note": "Original download date not recorded; processed_at is local read time.",
+      "header": {
+        "PEP": "8",
+        "Title": "Style Guide for Python Code",
+        "Author": "Guido van Rossum <guido@python.org>, Barry Warsaw <barry@python.org>, Alyssa Coghlan <ncoghlan@gmail.com>",
+        "Status": "Active",
+        "Type": "Process",
+        "Created": "05-Jul-2001",
+        "Post-History": "05-Jul-2001, 01-Aug-2013"
+      },
+      "license_or_permission": "Copyright\n=========\n\nThis document has been placed in the public domain.",
+      "raw_sha256": "6028935c6cb2c674d5f4d512c7ba6ce2923713b1c47ce1a78adc690db817fc5d",
+      "raw_char_count": 50782,
+      "char_count": 50090,
+      "unit_count": 31,
+      "excluded_sections": [
+        {
+          "title": "References",
+          "raw_start": 50424,
+          "raw_end": 50709,
+          "line_start": 1628,
+          "line_end": 1642
+        },
+        {
+          "title": "Copyright",
+          "raw_start": 50709,
+          "raw_end": 50782,
+          "line_start": 1643,
+          "line_end": 1646
+        }
+      ],
+      "units": [
+        {
+          "unit_id": "pep-0008:u0001",
+          "unit_number": 1,
+          "start": 0,
+          "end": 1552,
+          "char_count": 1552,
+          "raw_line_start": 12,
+          "raw_line_end": 48
+        },
+        {
+          "unit_id": "pep-0008:u0002",
+          "unit_number": 2,
+          "start": 1552,
+          "end": 3159,
+          "char_count": 1607,
+          "raw_line_start": 49,
+          "raw_line_end": 97
+        },
+        {
+          "unit_id": "pep-0008:u0003",
+          "unit_number": 3,
+          "start": 3159,
+          "end": 4682,
+          "char_count": 1523,
+          "raw_line_start": 98,
+          "raw_line_end": 145
+        },
+        {
+          "unit_id": "pep-0008:u0004",
+          "unit_number": 4,
+          "start": 4682,
+          "end": 6191,
+          "char_count": 1509,
+          "raw_line_start": 146,
+          "raw_line_end": 210
+        },
+        {
+          "unit_id": "pep-0008:u0005",
+          "unit_number": 5,
+          "start": 6191,
+          "end": 7830,
+          "char_count": 1639,
+          "raw_line_start": 211,
+          "raw_line_end": 245
+        },
+        {
+          "unit_id": "pep-0008:u0006",
+          "unit_number": 6,
+          "start": 7830,
+          "end": 9387,
+          "char_count": 1557,
+          "raw_line_start": 246,
+          "raw_line_end": 289
+        },
+        {
+          "unit_id": "pep-0008:u0007",
+          "unit_number": 7,
+          "start": 9387,
+          "end": 11104,
+          "char_count": 1717,
+          "raw_line_start": 290,
+          "raw_line_end": 340
+        },
+        {
+          "unit_id": "pep-0008:u0008",
+          "unit_number": 8,
+          "start": 11104,
+          "end": 12724,
+          "char_count": 1620,
+          "raw_line_start": 341,
+          "raw_line_end": 402
+        },
+        {
+          "unit_id": "pep-0008:u0009",
+          "unit_number": 9,
+          "start": 12724,
+          "end": 14411,
+          "char_count": 1687,
+          "raw_line_start": 403,
+          "raw_line_end": 452
+        },
+        {
+          "unit_id": "pep-0008:u0010",
+          "unit_number": 10,
+          "start": 14411,
+          "end": 15958,
+          "char_count": 1547,
+          "raw_line_start": 453,
+          "raw_line_end": 534
+        },
+        {
+          "unit_id": "pep-0008:u0011",
+          "unit_number": 11,
+          "start": 15958,
+          "end": 17462,
+          "char_count": 1504,
+          "raw_line_start": 535,
+          "raw_line_end": 603
+        },
+        {
+          "unit_id": "pep-0008:u0012",
+          "unit_number": 12,
+          "start": 17462,
+          "end": 18976,
+          "char_count": 1514,
+          "raw_line_start": 604,
+          "raw_line_end": 652
+        },
+        {
+          "unit_id": "pep-0008:u0013",
+          "unit_number": 13,
+          "start": 18976,
+          "end": 20599,
+          "char_count": 1623,
+          "raw_line_start": 653,
+          "raw_line_end": 728
+        },
+        {
+          "unit_id": "pep-0008:u0014",
+          "unit_number": 14,
+          "start": 20599,
+          "end": 22156,
+          "char_count": 1557,
+          "raw_line_start": 729,
+          "raw_line_end": 796
+        },
+        {
+          "unit_id": "pep-0008:u0015",
+          "unit_number": 15,
+          "start": 22156,
+          "end": 23794,
+          "char_count": 1638,
+          "raw_line_start": 797,
+          "raw_line_end": 848
+        },
+        {
+          "unit_id": "pep-0008:u0016",
+          "unit_number": 16,
+          "start": 23794,
+          "end": 25341,
+          "char_count": 1547,
+          "raw_line_start": 849,
+          "raw_line_end": 906
+        },
+        {
+          "unit_id": "pep-0008:u0017",
+          "unit_number": 17,
+          "start": 25341,
+          "end": 27069,
+          "char_count": 1728,
+          "raw_line_start": 907,
+          "raw_line_end": 951
+        },
+        {
+          "unit_id": "pep-0008:u0018",
+          "unit_number": 18,
+          "start": 27069,
+          "end": 28588,
+          "char_count": 1519,
+          "raw_line_start": 952,
+          "raw_line_end": 1000
+        },
+        {
+          "unit_id": "pep-0008:u0019",
+          "unit_number": 19,
+          "start": 28588,
+          "end": 30154,
+          "char_count": 1566,
+          "raw_line_start": 1001,
+          "raw_line_end": 1045
+        },
+        {
+          "unit_id": "pep-0008:u0020",
+          "unit_number": 20,
+          "start": 30154,
+          "end": 31720,
+          "char_count": 1566,
+          "raw_line_start": 1046,
+          "raw_line_end": 1091
+        },
+        {
+          "unit_id": "pep-0008:u0021",
+          "unit_number": 21,
+          "start": 31720,
+          "end": 33593,
+          "char_count": 1873,
+          "raw_line_start": 1092,
+          "raw_line_end": 1134
+        },
+        {
+          "unit_id": "pep-0008:u0022",
+          "unit_number": 22,
+          "start": 33593,
+          "end": 35276,
+          "char_count": 1683,
+          "raw_line_start": 1135,
+          "raw_line_end": 1170
+        },
+        {
+          "unit_id": "pep-0008:u0023",
+          "unit_number": 23,
+          "start": 35276,
+          "end": 36831,
+          "char_count": 1555,
+          "raw_line_start": 1171,
+          "raw_line_end": 1205
+        },
+        {
+          "unit_id": "pep-0008:u0024",
+          "unit_number": 24,
+          "start": 36831,
+          "end": 38421,
+          "char_count": 1590,
+          "raw_line_start": 1206,
+          "raw_line_end": 1241
+        },
+        {
+          "unit_id": "pep-0008:u0025",
+          "unit_number": 25,
+          "start": 38421,
+          "end": 40113,
+          "char_count": 1692,
+          "raw_line_start": 1242,
+          "raw_line_end": 1291
+        },
+        {
+          "unit_id": "pep-0008:u0026",
+          "unit_number": 26,
+          "start": 40113,
+          "end": 41716,
+          "char_count": 1603,
+          "raw_line_start": 1292,
+          "raw_line_end": 1328
+        },
+        {
+          "unit_id": "pep-0008:u0027",
+          "unit_number": 27,
+          "start": 41716,
+          "end": 43216,
+          "char_count": 1500,
+          "raw_line_start": 1329,
+          "raw_line_end": 1376
+        },
+        {
+          "unit_id": "pep-0008:u0028",
+          "unit_number": 28,
+          "start": 43216,
+          "end": 44722,
+          "char_count": 1506,
+          "raw_line_start": 1377,
+          "raw_line_end": 1430
+        },
+        {
+          "unit_id": "pep-0008:u0029",
+          "unit_number": 29,
+          "start": 44722,
+          "end": 46247,
+          "char_count": 1525,
+          "raw_line_start": 1431,
+          "raw_line_end": 1514
+        },
+        {
+          "unit_id": "pep-0008:u0030",
+          "unit_number": 30,
+          "start": 46247,
+          "end": 47763,
+          "char_count": 1516,
+          "raw_line_start": 1515,
+          "raw_line_end": 1558
+        },
+        {
+          "unit_id": "pep-0008:u0031",
+          "unit_number": 31,
+          "start": 47763,
+          "end": 50090,
+          "char_count": 2327,
+          "raw_line_start": 1559,
+          "raw_line_end": 1625
+        }
+      ],
+      "normalized_path": "data/processed/pep-0008.json"
+    },
+    {
+      "source_id": "pep-0257",
+      "document_id": "pep-0257",
+      "title": "Docstring Conventions",
+      "source": "https://raw.githubusercontent.com/python/peps/155e5bee7d985ef30555b496eb994d24a591f70b/peps/pep-0257.rst",
+      "source_path_or_url": "data/raw/pep-0257.rst",
+      "snapshot": "155e5bee7d985ef30555b496eb994d24a591f70b",
+      "snapshot_provenance": "user supplied; not remotely verified",
+      "accessed_at": null,
+      "accessed_at_note": "Original download date not recorded; processed_at is local read time.",
+      "header": {
+        "PEP": "257",
+        "Title": "Docstring Conventions",
+        "Author": "David Goodger <goodger@python.org>, Guido van Rossum <guido@python.org>",
+        "Discussions-To": "doc-sig@python.org",
+        "Status": "Active",
+        "Type": "Informational",
+        "Created": "29-May-2001",
+        "Post-History": "13-Jun-2001"
+      },
+      "license_or_permission": "Copyright\n=========\n\nThis document has been placed in the public domain.",
+      "raw_sha256": "7db41c5aaea3bfde0463307c72b38d735dc604491cadd059d7f9fe94b8142c0e",
+      "raw_char_count": 10581,
+      "char_count": 10055,
+      "unit_count": 5,
+      "excluded_sections": [
+        {
+          "title": "References and Footnotes",
+          "raw_start": 10109,
+          "raw_end": 10278,
+          "line_start": 272,
+          "line_end": 279
+        },
+        {
+          "title": "Copyright",
+          "raw_start": 10278,
+          "raw_end": 10353,
+          "line_start": 280,
+          "line_end": 285
+        }
+      ],
+      "units": [
+        {
+          "unit_id": "pep-0257:u0001",
+          "unit_number": 1,
+          "start": 0,
+          "end": 1771,
+          "char_count": 1771,
+          "raw_line_start": 12,
+          "raw_line_end": 61
+        },
+        {
+          "unit_id": "pep-0257:u0002",
+          "unit_number": 2,
+          "start": 1771,
+          "end": 3343,
+          "char_count": 1572,
+          "raw_line_start": 62,
+          "raw_line_end": 109
+        },
+        {
+          "unit_id": "pep-0257:u0003",
+          "unit_number": 3,
+          "start": 3343,
+          "end": 5194,
+          "char_count": 1851,
+          "raw_line_start": 110,
+          "raw_line_end": 150
+        },
+        {
+          "unit_id": "pep-0257:u0004",
+          "unit_number": 4,
+          "start": 5194,
+          "end": 6775,
+          "char_count": 1581,
+          "raw_line_start": 151,
+          "raw_line_end": 179
+        },
+        {
+          "unit_id": "pep-0257:u0005",
+          "unit_number": 5,
+          "start": 6775,
+          "end": 10055,
+          "char_count": 3280,
+          "raw_line_start": 180,
+          "raw_line_end": 293
+        }
+      ],
+      "normalized_path": "data/processed/pep-0257.json"
+    },
+    {
+      "source_id": "pep-0498",
+      "document_id": "pep-0498",
+      "title": "Literal String Interpolation",
+      "source": "https://raw.githubusercontent.com/python/peps/155e5bee7d985ef30555b496eb994d24a591f70b/peps/pep-0498.rst",
+      "source_path_or_url": "data/raw/pep-0498.rst",
+      "snapshot": "155e5bee7d985ef30555b496eb994d24a591f70b",
+      "snapshot_provenance": "user supplied; not remotely verified",
+      "accessed_at": null,
+      "accessed_at_note": "Original download date not recorded; processed_at is local read time.",
+      "header": {
+        "PEP": "498",
+        "Title": "Literal String Interpolation",
+        "Author": "Eric V. Smith <eric@trueblade.com>",
+        "Status": "Final",
+        "Type": "Standards Track",
+        "Created": "01-Aug-2015",
+        "Python-Version": "3.6",
+        "Post-History": "07-Aug-2015, 30-Aug-2015, 04-Sep-2015, 19-Sep-2015, 06-Nov-2016",
+        "Resolution": "https://mail.python.org/pipermail/python-dev/2015-September/141526.html"
+      },
+      "license_or_permission": "Copyright\n=========\n\nThis document has been placed in the public domain.",
+      "raw_sha256": "a3eb06e347f3bb39eeb7658b9339241d9cdd825b7c59876f372fea84376dc4a6",
+      "raw_char_count": 25103,
+      "char_count": 23528,
+      "unit_count": 14,
+      "excluded_sections": [
+        {
+          "title": "References",
+          "raw_start": 23867,
+          "raw_end": 25030,
+          "line_start": 701,
+          "line_end": 733
+        },
+        {
+          "title": "Copyright",
+          "raw_start": 25030,
+          "raw_end": 25103,
+          "line_start": 734,
+          "line_end": 737
+        }
+      ],
+      "units": [
+        {
+          "unit_id": "pep-0498:u0001",
+          "unit_number": 1,
+          "start": 0,
+          "end": 1629,
+          "char_count": 1629,
+          "raw_line_start": 11,
+          "raw_line_end": 46
+        },
+        {
+          "unit_id": "pep-0498:u0002",
+          "unit_number": 2,
+          "start": 1629,
+          "end": 3152,
+          "char_count": 1523,
+          "raw_line_start": 47,
+          "raw_line_end": 86
+        },
+        {
+          "unit_id": "pep-0498:u0003",
+          "unit_number": 3,
+          "start": 3152,
+          "end": 4737,
+          "char_count": 1585,
+          "raw_line_start": 87,
+          "raw_line_end": 133
+        },
+        {
+          "unit_id": "pep-0498:u0004",
+          "unit_number": 4,
+          "start": 4737,
+          "end": 6694,
+          "char_count": 1957,
+          "raw_line_start": 134,
+          "raw_line_end": 185
+        },
+        {
+          "unit_id": "pep-0498:u0005",
+          "unit_number": 5,
+          "start": 6694,
+          "end": 8265,
+          "char_count": 1571,
+          "raw_line_start": 186,
+          "raw_line_end": 214
+        },
+        {
+          "unit_id": "pep-0498:u0006",
+          "unit_number": 6,
+          "start": 8265,
+          "end": 9818,
+          "char_count": 1553,
+          "raw_line_start": 215,
+          "raw_line_end": 256
+        },
+        {
+          "unit_id": "pep-0498:u0007",
+          "unit_number": 7,
+          "start": 9818,
+          "end": 11327,
+          "char_count": 1509,
+          "raw_line_start": 257,
+          "raw_line_end": 307
+        },
+        {
+          "unit_id": "pep-0498:u0008",
+          "unit_number": 8,
+          "start": 11327,
+          "end": 12848,
+          "char_count": 1521,
+          "raw_line_start": 308,
+          "raw_line_end": 364
+        },
+        {
+          "unit_id": "pep-0498:u0009",
+          "unit_number": 9,
+          "start": 12848,
+          "end": 14427,
+          "char_count": 1579,
+          "raw_line_start": 365,
+          "raw_line_end": 430
+        },
+        {
+          "unit_id": "pep-0498:u0010",
+          "unit_number": 10,
+          "start": 14427,
+          "end": 15936,
+          "char_count": 1509,
+          "raw_line_start": 431,
+          "raw_line_end": 480
+        },
+        {
+          "unit_id": "pep-0498:u0011",
+          "unit_number": 11,
+          "start": 15936,
+          "end": 17723,
+          "char_count": 1787,
+          "raw_line_start": 481,
+          "raw_line_end": 517
+        },
+        {
+          "unit_id": "pep-0498:u0012",
+          "unit_number": 12,
+          "start": 17723,
+          "end": 19231,
+          "char_count": 1508,
+          "raw_line_start": 518,
+          "raw_line_end": 566
+        },
+        {
+          "unit_id": "pep-0498:u0013",
+          "unit_number": 13,
+          "start": 19231,
+          "end": 20827,
+          "char_count": 1596,
+          "raw_line_start": 567,
+          "raw_line_end": 618
+        },
+        {
+          "unit_id": "pep-0498:u0014",
+          "unit_number": 14,
+          "start": 20827,
+          "end": 23528,
+          "char_count": 2701,
+          "raw_line_start": 619,
+          "raw_line_end": 699
+        }
+      ],
+      "normalized_path": "data/processed/pep-0498.json"
+    },
+    {
+      "source_id": "pep-0572",
+      "document_id": "pep-0572",
+      "title": "Assignment Expressions",
+      "source": "https://raw.githubusercontent.com/python/peps/155e5bee7d985ef30555b496eb994d24a591f70b/peps/pep-0572.rst",
+      "source_path_or_url": "data/raw/pep-0572.rst",
+      "snapshot": "155e5bee7d985ef30555b496eb994d24a591f70b",
+      "snapshot_provenance": "user supplied; not remotely verified",
+      "accessed_at": null,
+      "accessed_at_note": "Original download date not recorded; processed_at is local read time.",
+      "header": {
+        "PEP": "572",
+        "Title": "Assignment Expressions",
+        "Author": "Chris Angelico <rosuav@gmail.com>, Tim Peters <tim.peters@gmail.com>, Guido van Rossum <guido@python.org>",
+        "Status": "Final",
+        "Type": "Standards Track",
+        "Created": "28-Feb-2018",
+        "Python-Version": "3.8",
+        "Post-History": "28-Feb-2018, 02-Mar-2018, 23-Mar-2018, 04-Apr-2018, 17-Apr-2018, 25-Apr-2018, 09-Jul-2018, 05-Aug-2019",
+        "Resolution": "https://mail.python.org/pipermail/python-dev/2018-July/154601.html"
+      },
+      "license_or_permission": "Copyright\n=========\n\nThis document has been placed in the public domain.",
+      "raw_sha256": "abf5401ec523a03d59a6f3173842784f426bfd49d8b0a87a512646557bcef8b1",
+      "raw_char_count": 47028,
+      "char_count": 46009,
+      "unit_count": 29,
+      "excluded_sections": [
+        {
+          "title": "References",
+          "raw_start": 46539,
+          "raw_end": 46955,
+          "line_start": 1313,
+          "line_end": 1323
+        },
+        {
+          "title": "Copyright",
+          "raw_start": 46955,
+          "raw_end": 47028,
+          "line_start": 1324,
+          "line_end": 1327
+        }
+      ],
+      "units": [
+        {
+          "unit_id": "pep-0572:u0001",
+          "unit_number": 1,
+          "start": 0,
+          "end": 1561,
+          "char_count": 1561,
+          "raw_line_start": 14,
+          "raw_line_end": 47
+        },
+        {
+          "unit_id": "pep-0572:u0002",
+          "unit_number": 2,
+          "start": 1561,
+          "end": 3106,
+          "char_count": 1545,
+          "raw_line_start": 48,
+          "raw_line_end": 81
+        },
+        {
+          "unit_id": "pep-0572:u0003",
+          "unit_number": 3,
+          "start": 3106,
+          "end": 4717,
+          "char_count": 1611,
+          "raw_line_start": 82,
+          "raw_line_end": 135
+        },
+        {
+          "unit_id": "pep-0572:u0004",
+          "unit_number": 4,
+          "start": 4717,
+          "end": 6253,
+          "char_count": 1536,
+          "raw_line_start": 136,
+          "raw_line_end": 179
+        },
+        {
+          "unit_id": "pep-0572:u0005",
+          "unit_number": 5,
+          "start": 6253,
+          "end": 7853,
+          "char_count": 1600,
+          "raw_line_start": 180,
+          "raw_line_end": 218
+        },
+        {
+          "unit_id": "pep-0572:u0006",
+          "unit_number": 6,
+          "start": 7853,
+          "end": 9363,
+          "char_count": 1510,
+          "raw_line_start": 219,
+          "raw_line_end": 251
+        },
+        {
+          "unit_id": "pep-0572:u0007",
+          "unit_number": 7,
+          "start": 9363,
+          "end": 10923,
+          "char_count": 1560,
+          "raw_line_start": 252,
+          "raw_line_end": 289
+        },
+        {
+          "unit_id": "pep-0572:u0008",
+          "unit_number": 8,
+          "start": 10923,
+          "end": 12519,
+          "char_count": 1596,
+          "raw_line_start": 290,
+          "raw_line_end": 319
+        },
+        {
+          "unit_id": "pep-0572:u0009",
+          "unit_number": 9,
+          "start": 12519,
+          "end": 14069,
+          "char_count": 1550,
+          "raw_line_start": 320,
+          "raw_line_end": 354
+        },
+        {
+          "unit_id": "pep-0572:u0010",
+          "unit_number": 10,
+          "start": 14069,
+          "end": 15806,
+          "char_count": 1737,
+          "raw_line_start": 355,
+          "raw_line_end": 409
+        },
+        {
+          "unit_id": "pep-0572:u0011",
+          "unit_number": 11,
+          "start": 15806,
+          "end": 17380,
+          "char_count": 1574,
+          "raw_line_start": 410,
+          "raw_line_end": 462
+        },
+        {
+          "unit_id": "pep-0572:u0012",
+          "unit_number": 12,
+          "start": 17380,
+          "end": 18886,
+          "char_count": 1506,
+          "raw_line_start": 463,
+          "raw_line_end": 512
+        },
+        {
+          "unit_id": "pep-0572:u0013",
+          "unit_number": 13,
+          "start": 18886,
+          "end": 20394,
+          "char_count": 1508,
+          "raw_line_start": 513,
+          "raw_line_end": 574
+        },
+        {
+          "unit_id": "pep-0572:u0014",
+          "unit_number": 14,
+          "start": 20394,
+          "end": 21960,
+          "char_count": 1566,
+          "raw_line_start": 575,
+          "raw_line_end": 637
+        },
+        {
+          "unit_id": "pep-0572:u0015",
+          "unit_number": 15,
+          "start": 21960,
+          "end": 23531,
+          "char_count": 1571,
+          "raw_line_start": 638,
+          "raw_line_end": 684
+        },
+        {
+          "unit_id": "pep-0572:u0016",
+          "unit_number": 16,
+          "start": 23531,
+          "end": 25065,
+          "char_count": 1534,
+          "raw_line_start": 685,
+          "raw_line_end": 721
+        },
+        {
+          "unit_id": "pep-0572:u0017",
+          "unit_number": 17,
+          "start": 25065,
+          "end": 26608,
+          "char_count": 1543,
+          "raw_line_start": 722,
+          "raw_line_end": 759
+        },
+        {
+          "unit_id": "pep-0572:u0018",
+          "unit_number": 18,
+          "start": 26608,
+          "end": 28199,
+          "char_count": 1591,
+          "raw_line_start": 760,
+          "raw_line_end": 796
+        },
+        {
+          "unit_id": "pep-0572:u0019",
+          "unit_number": 19,
+          "start": 28199,
+          "end": 29709,
+          "char_count": 1510,
+          "raw_line_start": 797,
+          "raw_line_end": 831
+        },
+        {
+          "unit_id": "pep-0572:u0020",
+          "unit_number": 20,
+          "start": 29709,
+          "end": 31281,
+          "char_count": 1572,
+          "raw_line_start": 832,
+          "raw_line_end": 864
+        },
+        {
+          "unit_id": "pep-0572:u0021",
+          "unit_number": 21,
+          "start": 31281,
+          "end": 32803,
+          "char_count": 1522,
+          "raw_line_start": 865,
+          "raw_line_end": 905
+        },
+        {
+          "unit_id": "pep-0572:u0022",
+          "unit_number": 22,
+          "start": 32803,
+          "end": 34661,
+          "char_count": 1858,
+          "raw_line_start": 906,
+          "raw_line_end": 947
+        },
+        {
+          "unit_id": "pep-0572:u0023",
+          "unit_number": 23,
+          "start": 34661,
+          "end": 36176,
+          "char_count": 1515,
+          "raw_line_start": 948,
+          "raw_line_end": 997
+        },
+        {
+          "unit_id": "pep-0572:u0024",
+          "unit_number": 24,
+          "start": 36176,
+          "end": 37959,
+          "char_count": 1783,
+          "raw_line_start": 998,
+          "raw_line_end": 1051
+        },
+        {
+          "unit_id": "pep-0572:u0025",
+          "unit_number": 25,
+          "start": 37959,
+          "end": 39460,
+          "char_count": 1501,
+          "raw_line_start": 1052,
+          "raw_line_end": 1095
+        },
+        {
+          "unit_id": "pep-0572:u0026",
+          "unit_number": 26,
+          "start": 39460,
+          "end": 41006,
+          "char_count": 1546,
+          "raw_line_start": 1096,
+          "raw_line_end": 1136
+        },
+        {
+          "unit_id": "pep-0572:u0027",
+          "unit_number": 27,
+          "start": 41006,
+          "end": 42537,
+          "char_count": 1531,
+          "raw_line_start": 1137,
+          "raw_line_end": 1173
+        },
+        {
+          "unit_id": "pep-0572:u0028",
+          "unit_number": 28,
+          "start": 42537,
+          "end": 44222,
+          "char_count": 1685,
+          "raw_line_start": 1174,
+          "raw_line_end": 1247
+        },
+        {
+          "unit_id": "pep-0572:u0029",
+          "unit_number": 29,
+          "start": 44222,
+          "end": 46009,
+          "char_count": 1787,
+          "raw_line_start": 1248,
+          "raw_line_end": 1310
+        }
+      ],
+      "normalized_path": "data/processed/pep-0572.json"
+    },
+    {
+      "source_id": "pep-0636",
+      "document_id": "pep-0636",
+      "title": "Structural Pattern Matching: Tutorial",
+      "source": "https://raw.githubusercontent.com/python/peps/155e5bee7d985ef30555b496eb994d24a591f70b/peps/pep-0636.rst",
+      "source_path_or_url": "data/raw/pep-0636.rst",
+      "snapshot": "155e5bee7d985ef30555b496eb994d24a591f70b",
+      "snapshot_provenance": "user supplied; not remotely verified",
+      "accessed_at": null,
+      "accessed_at_note": "Original download date not recorded; processed_at is local read time.",
+      "header": {
+        "PEP": "636",
+        "Title": "Structural Pattern Matching: Tutorial",
+        "Author": "Daniel F Moisset <dfmoisset@gmail.com>",
+        "Sponsor": "Guido van Rossum <guido@python.org>",
+        "BDFL-Delegate": "",
+        "Discussions-To": "python-dev@python.org",
+        "Status": "Final",
+        "Type": "Informational",
+        "Created": "12-Sep-2020",
+        "Python-Version": "3.10",
+        "Post-History": "22-Oct-2020, 08-Feb-2021",
+        "Resolution": "https://mail.python.org/archives/list/python-committers@python.org/message/SQC2FTLFV5A7DV7RCEAR2I2IKJKGK7W3"
+      },
+      "license_or_permission": "Copyright\n=========\n\nThis document is placed in the public domain or under the\nCC0-1.0-Universal license, whichever is more permissive.",
+      "raw_sha256": "9142442d0212ee6deb8b0ce9a2103c9804b7e77678236d2db97697738b47a262",
+      "raw_char_count": 25325,
+      "char_count": 24740,
+      "unit_count": 15,
+      "excluded_sections": [
+        {
+          "title": "Copyright",
+          "raw_start": 25189,
+          "raw_end": 25325,
+          "line_start": 609,
+          "line_end": 613
+        }
+      ],
+      "units": [
+        {
+          "unit_id": "pep-0636:u0001",
+          "unit_number": 1,
+          "start": 0,
+          "end": 1570,
+          "char_count": 1570,
+          "raw_line_start": 15,
+          "raw_line_end": 53
+        },
+        {
+          "unit_id": "pep-0636:u0002",
+          "unit_number": 2,
+          "start": 1570,
+          "end": 3082,
+          "char_count": 1512,
+          "raw_line_start": 54,
+          "raw_line_end": 85
+        },
+        {
+          "unit_id": "pep-0636:u0003",
+          "unit_number": 3,
+          "start": 3082,
+          "end": 4768,
+          "char_count": 1686,
+          "raw_line_start": 86,
+          "raw_line_end": 127
+        },
+        {
+          "unit_id": "pep-0636:u0004",
+          "unit_number": 4,
+          "start": 4768,
+          "end": 6438,
+          "char_count": 1670,
+          "raw_line_start": 128,
+          "raw_line_end": 166
+        },
+        {
+          "unit_id": "pep-0636:u0005",
+          "unit_number": 5,
+          "start": 6438,
+          "end": 8195,
+          "char_count": 1757,
+          "raw_line_start": 167,
+          "raw_line_end": 205
+        },
+        {
+          "unit_id": "pep-0636:u0006",
+          "unit_number": 6,
+          "start": 8195,
+          "end": 10073,
+          "char_count": 1878,
+          "raw_line_start": 206,
+          "raw_line_end": 241
+        },
+        {
+          "unit_id": "pep-0636:u0007",
+          "unit_number": 7,
+          "start": 10073,
+          "end": 11678,
+          "char_count": 1605,
+          "raw_line_start": 242,
+          "raw_line_end": 276
+        },
+        {
+          "unit_id": "pep-0636:u0008",
+          "unit_number": 8,
+          "start": 11678,
+          "end": 13183,
+          "char_count": 1505,
+          "raw_line_start": 277,
+          "raw_line_end": 302
+        },
+        {
+          "unit_id": "pep-0636:u0009",
+          "unit_number": 9,
+          "start": 13183,
+          "end": 14698,
+          "char_count": 1515,
+          "raw_line_start": 303,
+          "raw_line_end": 336
+        },
+        {
+          "unit_id": "pep-0636:u0010",
+          "unit_number": 10,
+          "start": 14698,
+          "end": 16337,
+          "char_count": 1639,
+          "raw_line_start": 337,
+          "raw_line_end": 380
+        },
+        {
+          "unit_id": "pep-0636:u0011",
+          "unit_number": 11,
+          "start": 16337,
+          "end": 17989,
+          "char_count": 1652,
+          "raw_line_start": 381,
+          "raw_line_end": 418
+        },
+        {
+          "unit_id": "pep-0636:u0012",
+          "unit_number": 12,
+          "start": 17989,
+          "end": 19495,
+          "char_count": 1506,
+          "raw_line_start": 419,
+          "raw_line_end": 450
+        },
+        {
+          "unit_id": "pep-0636:u0013",
+          "unit_number": 13,
+          "start": 19495,
+          "end": 21225,
+          "char_count": 1730,
+          "raw_line_start": 453,
+          "raw_line_end": 506
+        },
+        {
+          "unit_id": "pep-0636:u0014",
+          "unit_number": 14,
+          "start": 21225,
+          "end": 22825,
+          "char_count": 1600,
+          "raw_line_start": 507,
+          "raw_line_end": 556
+        },
+        {
+          "unit_id": "pep-0636:u0015",
+          "unit_number": 15,
+          "start": 22825,
+          "end": 24740,
+          "char_count": 1915,
+          "raw_line_start": 557,
+          "raw_line_end": 607
+        }
+      ],
+      "normalized_path": "data/processed/pep-0636.json"
+    }
+  ]
+}
