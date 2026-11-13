@@ -1,4 +1,4 @@
 strategy,chunking,chunk_size,overlap,metadata,filter,vectorizer,hypothesis,dev_hit1,dev_hit3,test_hit1,test_hit3,notes
-A,,,,,,,,,,,,
-B,,,,,,,,,,,,
-C,,,,,,,,,,,,
+A,fixed_characters,500,50,same source/page/unit offsets and original PEP headers,none,pending,Overlapping fixed windows provide a simple baseline,,,,,Configured before retrieval; no metrics yet
+B,paragraph_heading,500,0,same source/page/unit offsets and original PEP headers,none,pending,Paragraph and heading boundaries may preserve context better than fixed windows,,,,,Oversized paragraphs split at whitespace; model and store not selected
+C,same_as_B,500,0,same source/page/unit offsets and original PEP headers,question.filter Type only when supplied,pending,Filtering may reduce out-of-scope retrieval compared with B,,,,,Reuses B chunks; only retrieval filtering differs

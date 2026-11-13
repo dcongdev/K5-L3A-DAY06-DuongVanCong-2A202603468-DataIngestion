@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "config": {
+    "A": {
+      "method": "fixed",
+      "size": 500,
+      "overlap": 50,
+      "filter": false
+    },
+    "B": {
+      "method": "paragraph",
+      "max_size": 500,
+      "overlap": 0,
+      "filter": false
+    },
+    "C": {
+      "chunks_from": "B",
+      "filter": "question.filter, only if nonempty"
+    }
+  },
+  "units_sha256": "053b40c2f4e3648cb5df57bc6c571b6a72bb8ef0d3c9929e33d5bfa234d6be6a",
+  "offset_convention": "0-based Unicode characters, end exclusive; start/end in normalized document; unit_offset_* in source unit.",
+  "source_unit_count": 117,
+  "strategies": {
+    "A": {
+      "path": "data/chunks/A.jsonl",
+      "chunk_count": 488,
+      "min_chars": 51,
+      "max_chars": 500,
+      "mean_chars": 436.10655737704917,
+      "median_chars": 500.0,
+      "total_chars": 212820,
+      "chunking_seconds": 0.002105599967762828,
+      "sha256": "f5216c54be0cb2b19214c45539eef3a10fc9adc2123a7549c379d43458f30a23"
+    },
+    "B": {
+      "path": "data/chunks/B.jsonl",
+      "chunk_count": 576,
+      "min_chars": 7,
+      "max_chars": 500,
+      "mean_chars": 337.27430555555554,
+      "median_chars": 365.0,
+      "total_chars": 194270,
+      "chunking_seconds": 0.00483150000218302,
+      "sha256": "e54c1f977c702437159cc99f68bdd49262220b7307dab27d1c5aa9d09e0a6cd5"
+    },
+    "C": {
+      "chunks_from": "B",
+      "path": "data/chunks/B.jsonl",
+      "chunk_count": 576
+    }
+  }
+}
