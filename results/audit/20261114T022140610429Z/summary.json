@@ -1,0 +1,54 @@
+{
+  "review_status": "draft_pending_owner_review",
+  "strategies": {
+    "A": {
+      "coherence_mean": 1.0,
+      "coherence_n": 10,
+      "grounding_mean": 1.4,
+      "grounding_distribution": {
+        "0": 1,
+        "1": 1,
+        "2": 3
+      },
+      "grounding_n": 5,
+      "metadata_correct": 15,
+      "metadata_n": 15,
+      "requested_scope_compliant_questions": 1,
+      "requested_scope_questions": 2,
+      "applied_filter_compliance": "N/A (no filters applied)"
+    },
+    "B": {
+      "coherence_mean": 1.8,
+      "coherence_n": 10,
+      "grounding_mean": 2.0,
+      "grounding_distribution": {
+        "0": 0,
+        "1": 0,
+        "2": 5
+      },
+      "grounding_n": 5,
+      "metadata_correct": 15,
+      "metadata_n": 15,
+      "requested_scope_compliant_questions": 1,
+      "requested_scope_questions": 2,
+      "applied_filter_compliance": "N/A (no filters applied)"
+    },
+    "C": {
+      "coherence_mean": 1.8,
+      "coherence_n": 10,
+      "grounding_mean": 2.0,
+      "grounding_distribution": {
+        "0": 0,
+        "1": 0,
+        "2": 5
+      },
+      "grounding_n": 5,
+      "metadata_correct": 15,
+      "metadata_n": 15,
+      "requested_scope_compliant_questions": 2,
+      "requested_scope_questions": 2,
+      "applied_filter_compliance": "2/2"
+    }
+  },
+  "scope": "content-based draft labels; metadata checked mechanically; not an independent human audit"
+}

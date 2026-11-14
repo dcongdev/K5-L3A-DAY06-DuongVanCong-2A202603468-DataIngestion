@@ -1,0 +1,78 @@
+{
+  "created_at": "2026-11-14T02:30:23.357233+00:00",
+  "benchmark_run": "20261114T022140610429Z",
+  "sampling_rule": "First 10 unit IDs sorted lexicographically; position=start+100 Unicode chars; choose covering chunk with smallest start then chunk_id. C reuses B. Rule chosen before assigning coherence labels, after retrieval run.",
+  "sample_positions": [
+    {
+      "unit_id": "pep-0001:u0001",
+      "position": 100
+    },
+    {
+      "unit_id": "pep-0001:u0002",
+      "position": 1604
+    },
+    {
+      "unit_id": "pep-0001:u0003",
+      "position": 3278
+    },
+    {
+      "unit_id": "pep-0001:u0004",
+      "position": 4990
+    },
+    {
+      "unit_id": "pep-0001:u0005",
+      "position": 6574
+    },
+    {
+      "unit_id": "pep-0001:u0006",
+      "position": 8141
+    },
+    {
+      "unit_id": "pep-0001:u0007",
+      "position": 9836
+    },
+    {
+      "unit_id": "pep-0001:u0008",
+      "position": 11483
+    },
+    {
+      "unit_id": "pep-0001:u0009",
+      "position": 13082
+    },
+    {
+      "unit_id": "pep-0001:u0010",
+      "position": 14784
+    }
+  ],
+  "limitations": [
+    "All 10 coherence samples are from PEP 1, not representative of all 6 documents.",
+    "Labels are a draft pending owner review; no claim of independent human review.",
+    "Content review took place after retrieval scores were available; not blind.",
+    "Metadata checks verify local provenance; remote snapshot correspondence is not verified."
+  ],
+  "input_sha256": {
+    "data/manifest.json": "538d6282bbc69bd9956b4b17fc97bc08f9fcc77a1d73571e6655d5b0b69a0a29",
+    "data/processed/units.jsonl": "053b40c2f4e3648cb5df57bc6c571b6a72bb8ef0d3c9929e33d5bfa234d6be6a",
+    "results/benchmark/20261114T022140610429Z/test_traces.jsonl": "d431d8689115322fbdb4f05c28d32e978ab1c24f85b7bd41bc11cab2f740f714",
+    "results/benchmark/20261114T022140610429Z/dev_traces.jsonl": "4945e4ef19c059503a34d8e4c24d1957549465a5cf37d09dbdc783e4df658a68",
+    "results/benchmark/20261114T022140610429Z/selection.json": "f33efa669dba683d8540d57bd3e332e64a889893c8c5a61ca87d3a8d537cc8e1",
+    "data/chunks/A.jsonl": "f5216c54be0cb2b19214c45539eef3a10fc9adc2123a7549c379d43458f30a23",
+    "data/chunks/B.jsonl": "e54c1f977c702437159cc99f68bdd49262220b7307dab27d1c5aa9d09e0a6cd5",
+    "data/raw/pep-0001.rst": "7f94574b563a9e3f59c25fe225e0b04d695cb82ad28e83256b76418f8b457adb",
+    "data/raw/pep-0008.rst": "6028935c6cb2c674d5f4d512c7ba6ce2923713b1c47ce1a78adc690db817fc5d",
+    "data/raw/pep-0257.rst": "7db41c5aaea3bfde0463307c72b38d735dc604491cadd059d7f9fe94b8142c0e",
+    "data/raw/pep-0498.rst": "a3eb06e347f3bb39eeb7658b9339241d9cdd825b7c59876f372fea84376dc4a6",
+    "data/raw/pep-0572.rst": "abf5401ec523a03d59a6f3173842784f426bfd49d8b0a87a512646557bcef8b1",
+    "data/raw/pep-0636.rst": "9142442d0212ee6deb8b0ce9a2103c9804b7e77678236d2db97697738b47a262",
+    "data/processed/pep-0001.json": "d731afe707fadca62cf93ab7517825ad51c19ca72e98c9c05125c2783e579043",
+    "data/processed/pep-0008.json": "03d37dc2f1e3f1311f540774cef3c63f75e924366b564601fbf95dd0cd28020c",
+    "data/processed/pep-0257.json": "e44048727e68429897d48cf85c551aeb3c2d716194b6dad3680215fd08680878",
+    "data/processed/pep-0498.json": "a290403a38d6754a9b723c696bfc2395f50b012b52ee73f57b74fe8edd85ff69",
+    "data/processed/pep-0572.json": "b36c7670b882564978b25418bd36006b27501af0aaa3c92d83bf5fbf96e0acc4",
+    "data/processed/pep-0636.json": "403579acff26ffaa1b9e3b28ca2993fe71f78ea7dd6f748d25523f74e0c2f3fa",
+    "data/chunks/summary.json": "dc364437f9ddd254cd4f8de806b51ef13313007f5a8611bf1f0ab30370a735ff",
+    "results/ingestion_runs/20261114T021453497545Z.json": "1cb01fdcd06a694e8584d034d62c841360a245c71519877d67fcff0951e85fe9",
+    "results/benchmark/20261114T022140610429Z/dev_summary.json": "c17d2c2695f7f665473d3a6fa464f0330bda2817e92f7c4786830a854ec44951",
+    "results/benchmark/20261114T022140610429Z/test_summary.json": "fd3de7eb079eb1dad9c05850b1341d471cb124b554e51982c747d1e18d9aa0a0"
+  }
+}
