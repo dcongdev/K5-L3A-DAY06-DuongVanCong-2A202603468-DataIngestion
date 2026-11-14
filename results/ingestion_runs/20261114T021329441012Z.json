@@ -1,0 +1,17 @@
+{
+  "run_id": "20261114T021329441012Z",
+  "started_at": "2026-11-14T02:13:29.441161+00:00",
+  "status": "failed",
+  "stage": "database preflight",
+  "strategies": {},
+  "benchmark_run": false,
+  "requested_model": {
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "api_cost": 0,
+  "cost_note": "Local CPU; electricity/hardware/download traffic not priced",
+  "error_type": "ConnectionTimeout",
+  "finished_at": "2026-11-14T02:13:34.555563+00:00",
+  "total_seconds": 5.114602699992247
+}

@@ -1,0 +1,16 @@
+{
+  "run_id": "20261114T021429348237Z",
+  "started_at": "2026-11-14T02:14:29.348384+00:00",
+  "status": "running",
+  "stage": "load model",
+  "strategies": {},
+  "benchmark_run": false,
+  "requested_model": {
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "api_cost": 0,
+  "cost_note": "Local CPU; electricity/hardware/download traffic not priced",
+  "finished_at": "2026-11-14T02:14:47.630895+00:00",
+  "total_seconds": 18.282685499987565
+}

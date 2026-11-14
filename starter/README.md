@@ -1,5 +1,9 @@
 # Starter · PostgreSQL + pgvector
 
+**Tiến độ hiện tại:** đã có chuẩn hóa RST, benchmark input, chunking A/B và code
+embedding/vector store. Xem [VECTORS.md](VECTORS.md) để chạy `python -m src.ingest_vectors`.
+Các phần dưới mô tả khung starter ban đầu; `src.run` và evaluation vẫn chưa hiện thực.
+
 Bộ khởi động **tùy chọn** cho lab cá nhân. Docker Compose tạo PostgreSQL + pgvector local; các file trong `src/` là **khung pseudocode có TODO**, chưa đọc tài liệu, tạo embedding, lưu vector hay chạy benchmark. Bạn cần tự hiện thực. Vẫn có thể chọn Qdrant, Chroma hoặc vector store tương đương theo [GUIDE.md](../GUIDE.md).
 
 ## Cấu trúc
