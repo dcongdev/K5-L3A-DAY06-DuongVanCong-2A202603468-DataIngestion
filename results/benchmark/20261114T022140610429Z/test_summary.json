@@ -1,0 +1,35 @@
+{
+  "metrics": [
+    {
+      "strategy": "A",
+      "split": "test",
+      "n": 5,
+      "hit1_n": 1,
+      "hit3_n": 2,
+      "hit1": 0.2,
+      "hit3": 0.4,
+      "retrieval_seconds": 0.15483699983451515
+    },
+    {
+      "strategy": "B",
+      "split": "test",
+      "n": 5,
+      "hit1_n": 4,
+      "hit3_n": 5,
+      "hit1": 0.8,
+      "hit3": 1.0,
+      "retrieval_seconds": 0.14073879981879145
+    },
+    {
+      "strategy": "C",
+      "split": "test",
+      "n": 5,
+      "hit1_n": 4,
+      "hit3_n": 5,
+      "hit1": 0.8,
+      "hit3": 1.0,
+      "retrieval_seconds": 0.14782739989459515
+    }
+  ],
+  "manual_audits_completed": false
+}

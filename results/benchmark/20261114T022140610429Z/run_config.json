@@ -1,0 +1,31 @@
+{
+  "benchmark_freeze": "05a51a85e97feff031db172fe89256a951abf011680a9b55b2035aea4be0145e",
+  "chunk_summary": "dc364437f9ddd254cd4f8de806b51ef13313007f5a8611bf1f0ab30370a735ff",
+  "code": {
+    "benchmark_runner": "ab2f97c8685c1e7ff54274f2233def93a4cbb95129612d7a82a2ea3775954bb9",
+    "evaluation": "2e5c09305a1c8b183f1a933314b3f0d315ae6183428e2917766a62810c66638c",
+    "embeddings": "96cb83290e83138039e8fcd9ceb47c8bab1c9a7e73c54455aa7804599fc65870",
+    "store": "a7f93c180a27b09dd68a6d1dbf205a6d3a328fa5049a3aa306f449e23a73fbde"
+  },
+  "embedding_signature": "2388832d7089a2f9e266b028a597cb0036e8f3af435c60ed0e94ae088c9d09f3",
+  "database_fingerprint": "640b3bb7bbe0bd4c5fc0371290dc909bee092d5cf772c0f941323adaac6b25b8",
+  "model": {
+    "provider": "local SentenceTransformers",
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "dimensions": 384,
+    "device": "cpu",
+    "normalize_embeddings": true,
+    "max_seq_length": 128,
+    "query_document_encoding": "same encode; no prefix or prompt",
+    "truncation": "model default right truncation; token statistics recorded",
+    "packages": {
+      "sentence-transformers": "5.7.0",
+      "transformers": "5.22.2",
+      "torch": "2.15.0"
+    }
+  },
+  "timing": "perf_counter; search includes DB connection and result transfer, excludes query embedding; generic warm-up; rotating A/B/C order; OS/database cache not reset",
+  "metric": "full recorded quote required in ONE correctly sourced chunk; whitespace normalized; no automatic semantic equivalence",
+  "ai_authored_gold_human_review_pending": true
+}

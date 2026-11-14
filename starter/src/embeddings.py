@@ -28,7 +28,8 @@ class MyEmbedder:
     """Real local CPU embeddings; identical encoding for documents and queries."""
 
     def __init__(self, model_name: str = MODEL_NAME, *, revision: str = MODEL_REVISION,
-                 cache_folder: Path | None = None, batch_size: int = 32) -> None:
+                 cache_folder: Path | None = None, batch_size: int = 32,
+                 local_files_only: bool = False) -> None:
         from sentence_transformers import SentenceTransformer
         if batch_size <= 0:
             raise ValueError("batch_size must be positive")
@@ -39,7 +40,7 @@ class MyEmbedder:
         self.batch_size = batch_size
         self.model = SentenceTransformer(model_name, revision=revision, device="cpu",
             trust_remote_code=False, cache_folder=str(cache_folder) if cache_folder else None,
-            model_kwargs={"use_safetensors": True})
+            model_kwargs={"use_safetensors": True}, local_files_only=local_files_only)
         self.dimensions = self.model.get_sentence_embedding_dimension()
         self.model.tokenizer.truncation_side = "right"
         self.config = {"provider": "local SentenceTransformers", "model": model_name,
